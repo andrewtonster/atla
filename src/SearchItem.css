@@ -1,0 +1,7 @@
+.search__item {
+  padding: 10px 20px;
+}
+
+.search__item:hover {
+  background-color: red;
+}

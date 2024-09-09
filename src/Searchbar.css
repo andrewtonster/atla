@@ -1,0 +1,25 @@
+.searchbar__container {
+  background-color: black;
+  border-radius: 10px;
+  height: 2.5rem;
+  width: 100%;
+  padding: 0 15px;
+  box-shadow: 0px 0px 8px #ddd;
+  display: flex;
+  align-items: center;
+}
+
+input {
+  width: 100%;
+  border: none;
+  height: 100%;
+  font-size: 1.25rem;
+}
+
+input:focus {
+  outline: none;
+}
+
+#search__icon {
+  color: white;
+}
