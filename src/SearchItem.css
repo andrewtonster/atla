@@ -1,7 +1,29 @@
-.search__item {
-  padding: 10px 20px;
+.search__item__container {
+  display: flex; /* Establishes a flex container */
+  align-items: center; /* Centers items vertically */
+
+  padding: 10px 20px; /* Adjust padding as needed */
+  cursor: pointer; /* Makes the entire container clickable */
 }
 
-.search__item:hover {
+.search__item {
+  margin-left: 15px;
+}
+
+.search__img__container {
+  width: 50px; /* Container width */
+  height: 50px; /* Set a fixed height to ensure it is square */
+  border: 2px solid black; /* Visual indication of the container */
+  overflow: hidden; /* Ensures no overflow */
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.search__img {
+  width: 100%; /* Image takes full width of the container */
+  height: 100%; /* Image takes full height of the container */
+  object-fit: cover;
+}
+
+.search__item__container:hover {
   background-color: red;
 }

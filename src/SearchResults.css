@@ -1,5 +1,6 @@
 .results__list {
   width: 100%;
+  max-width: 254px;
   background-color: blue;
   display: flex;
   flex-direction: column;
@@ -7,4 +8,5 @@
   margin-top: 1rem;
   max-height: 300px;
   overflow-y: scroll;
+  position: absolute;
 }

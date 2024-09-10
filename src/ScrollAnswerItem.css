@@ -1,0 +1,46 @@
+.box__row {
+  display: flex;
+  gap: 5px;
+}
+
+.box {
+  width: 80px;
+  height: 80px;
+  border: 2px solid black;
+  margin-bottom: 1rem;
+  overflow-wrap: break-word;
+}
+
+.box span {
+  width: 70px;
+  overflow-wrap: break-word;
+  text-align: center;
+}
+.character__box {
+}
+
+.character__box img {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+}
+
+.hair__box,
+.gender__box,
+.nation__box,
+.fighting__box,
+.bending__box,
+.age__box,
+.position__box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.match-true {
+  background-color: green;
+}
+
+.match-false {
+  background-color: red;
+}

@@ -6,12 +6,29 @@
   font-size: 16px;
 }
 
-.hero {
-  height: 100vh;
+body {
+  height: 100%;
+}
+
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw; /* Full viewport width */
+  height: 100vh; /* Full viewport height */
+  background-size: cover; /* Cover the entire area */
+  z-index: -1; /* Place behind other content */
   background-image: url("./image/Avatar.jpg");
-  background-size: cover;
   box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.5);
 }
+/* .hero {
+  background-size: cover;
+  
+
+  background-size: cover;
+  background-attachment: fixed;
+} */
+
 .content {
   display: flex;
   border: 1px red solid;
