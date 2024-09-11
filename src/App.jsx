@@ -12,29 +12,36 @@ function App() {
   update results in search results is like a list of matching names*/
   const [results, setResults] = useState([]);
   const [selectedResult, setSelectedResult] = useState([]);
+  const [open, setOpen] = useState();
   const [answer, setAnswer] = useState(
     users[Math.floor(Math.random() * users.length)]
   );
 
   const handleItemClick = (result) => {
-    // setSelectedResult(result);
     setSelectedResult((prevResults) => [result, ...prevResults]);
   };
 
   return (
     <>
-      <div class="background"></div>
+      <div className="background"></div>
       <section className="hero">
         <div className="content">
-          <div className="content__header">
-            <h1>ATLADLE</h1>
-            <p>Guess today's Avatar Character</p>
-            <p>Guess character to gain clues on every try</p>
-            <a href="#"> Start Now</a>
+          <div className="content__header__border">
+            <div className="content__header">
+              <h1>ATLADLE</h1>
+              <p>Guess today's Avatar Character</p>
+              <p>Guess character to gain clues on every try</p>
+              <a href="#"> Start Now</a>
+            </div>
           </div>
           <div>
-            <SearchBar setResults={setResults} />
-            <SearchResults results={results} onClick={handleItemClick} />
+            <SearchBar setOpen={setOpen} setResults={setResults} />
+            <SearchResults
+              setOpen={setOpen}
+              open={open}
+              results={results}
+              onClick={handleItemClick}
+            />
           </div>
           <div>
             <ScrollAnswers answer={answer} results={selectedResult} />

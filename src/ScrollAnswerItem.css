@@ -9,6 +9,7 @@
   border: 2px solid black;
   margin-bottom: 1rem;
   overflow-wrap: break-word;
+  border-radius: 5px;
 }
 
 .box span {
@@ -38,9 +39,11 @@
 }
 
 .match-true {
-  background-color: green;
+  background-color: #8aca4a;
+  border-color: #314905;
 }
 
 .match-false {
-  background-color: red;
+  background-color: #f18568;
+  border-color: #9c2226;
 }

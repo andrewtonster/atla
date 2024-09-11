@@ -20,12 +20,15 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background-color: lightblue;
+  /* background-color: lightblue; */
   width: 80px;
+  color: #241b18;
+  margin-bottom: 10px;
 }
 
 .answer__title_container span {
   text-align: center;
+  text-shadow: 1px 0 0.2px #96847d;
 }
 
 .lines {

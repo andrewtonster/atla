@@ -11,7 +11,7 @@ body {
 }
 
 .background {
-  position: fixed;
+  position: fixed; /*position of background is fixed to img*/
   top: 0;
   left: 0;
   width: 100vw; /* Full viewport width */
@@ -19,7 +19,7 @@ body {
   background-size: cover; /* Cover the entire area */
   z-index: -1; /* Place behind other content */
   background-image: url("./image/Avatar.jpg");
-  box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.5);
+  /* box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.5); */
 }
 /* .hero {
   background-size: cover;
@@ -50,15 +50,35 @@ body {
   text-decoration: none;
 }
 
+.content__header__border {
+  padding: 2px;
+  border: 2px #684e24 solid;
+
+  background-color: #a99067;
+}
+
 .content__header {
+  border-radius: 2px;
   display: flex;
-  border: 1px red solid;
+  border: 2px #684e24 solid;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   max-width: 360px;
+  background-color: #ddd0a7;
+  color: #241b18;
 }
 
 .content__header h1 {
   font-size: 1.2rem;
 }
+
+/*
+1 2
+4 3
+
+hashmap
+
+1: 1
+
+*/

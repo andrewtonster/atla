@@ -1,9 +1,10 @@
 .search__item__container {
   display: flex; /* Establishes a flex container */
   align-items: center; /* Centers items vertically */
-
+  background-color: #dece88;
   padding: 10px 20px; /* Adjust padding as needed */
   cursor: pointer; /* Makes the entire container clickable */
+  color: #241b18;
 }
 
 .search__item {
@@ -25,5 +26,5 @@
 }
 
 .search__item__container:hover {
-  background-color: red;
+  background-color: #c4b58f;
 }
