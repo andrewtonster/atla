@@ -1,15 +1,35 @@
+@import url("https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box; /* This means that padding is included inside width and height.*/
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 16px;
+}
+
+::-webkit-scrollbar {
+  width: 16px;
+}
+
+::-webkit-scrollbar-track {
+  background: #5c5a54; /* Color of the scrollbar track */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #4a4843; /* Color of the scrollbar thumb */
 }
 
 body {
   height: 100%;
 }
 
+.title {
+  font-family: "Permanent Marker", cursive;
+  color: black;
+  font-size: 6rem;
+  font-weight: bold;
+}
 .background {
   position: fixed; /*position of background is fixed to img*/
   top: 0;
@@ -51,34 +71,56 @@ body {
 }
 
 .content__header__border {
-  padding: 2px;
+  padding: 4px;
   border: 2px #684e24 solid;
-
+  border-radius: 2px;
   background-color: #a99067;
+  margin-bottom: 1rem;
 }
 
 .content__header {
-  border-radius: 2px;
-  display: flex;
+  text-align: center;
+  height: 200px;
+  border-radius: 4px;
+  /* display: flex; */
   border: 2px #684e24 solid;
-  flex-direction: column;
+  /* flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: center; */
   max-width: 360px;
   background-color: #ddd0a7;
   color: #241b18;
+  padding: 1rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
 
 .content__header h1 {
+  font-family: "Permanent Marker", cursive;
   font-size: 1.2rem;
+  margin-bottom: 2rem;
 }
 
-/*
-1 2
-4 3
+.notice {
+  margin-top: 3rem;
+  font-size: 12px;
+  color: #5c5a54;
+}
 
-hashmap
+.victory__results {
+  border-radius: 5px;
+  color: black;
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  background-color: #a1d56e;
+  border: 2px solid #684e24;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  height: 300px;
+}
 
-1: 1
-
-*/
+.victory__header {
+  font-size: 24px;
+}

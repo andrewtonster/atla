@@ -4,17 +4,18 @@ import { users } from "./data";
 import "./Searchbar.css";
 
 /* This component fetches the data and passes the value back to the Parent App for other areas to use */
-export const SearchBar = ({ setOpen, setResults }) => {
+export const SearchBar = ({ win, results, setOpen, setResults }) => {
   const [input, setInput] = useState("");
 
   // we are returning the whole user object and storing in list of results
   const fetchData = (value) => {
-    const results = users.filter((user) => {
+    // console.log(results);
+    const output = users.filter((user) => {
       return (
         value && user && user.name && user.name.toLowerCase().includes(value)
       );
     });
-    setResults(results);
+    setResults(output);
   };
 
   const handleChange = (value) => {
@@ -24,13 +25,27 @@ export const SearchBar = ({ setOpen, setResults }) => {
   };
 
   return (
-    <div className="searchbar__container">
-      <input
-        placeholder="Type to search.."
-        value={input}
-        onChange={(e) => handleChange(e.target.value)}
-      ></input>
-      <MdOutlineArrowCircleRight id="search__icon" />
+    <div className="searchbar__border">
+      <div className="searchbar__container">
+        {win ? (
+          <input
+            disabled
+            placeholder="Type to search.."
+            value={input}
+            onChange={(e) => handleChange(e.target.value)}
+          ></input>
+        ) : (
+          <div>
+            <input
+              placeholder="Type to search.."
+              value={input}
+              onChange={(e) => handleChange(e.target.value)}
+            ></input>
+          </div>
+        )}
+
+        {/* <MdOutlineArrowCircleRight id="search__icon" /> */}
+      </div>
     </div>
   );
 };

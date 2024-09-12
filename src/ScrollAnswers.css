@@ -10,16 +10,18 @@
 }
 
 .answers__titles__container {
+  border-radius: 2px;
+  backdrop-filter: blur(3px);
   display: flex;
   flex-direction: row;
-  height: 50px;
+  height: 100px;
   gap: 5px;
 }
 
 .answer__title_container {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+
   /* background-color: lightblue; */
   width: 80px;
   color: #241b18;
@@ -27,11 +29,16 @@
 }
 
 .answer__title_container span {
+  margin: auto;
+}
+
+.answer__title_container span {
   text-align: center;
-  text-shadow: 1px 0 0.2px #96847d;
+  font-weight: 600;
+  /* text-shadow: 1px 0 0.2px #96847d; */
 }
 
 .lines {
-  border: 2px solid red;
+  border: 2px solid black;
   height: 2px;
 }

@@ -8,6 +8,10 @@
   box-shadow: 0px 0px 8px #ddd;
   display: flex;
   align-items: center;
+  /* margin-bottom: 3rem; */
+  background-color: #ddd0a7;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 input {
@@ -15,6 +19,9 @@ input {
   border: none;
   height: 100%;
   font-size: 1.25rem;
+  border: 2px #684e24 solid;
+  padding-right: 100px;
+  padding-left: 8px;
 }
 
 input:focus {
@@ -23,4 +30,12 @@ input:focus {
 
 #search__icon {
   color: white;
+}
+
+.searchbar__border {
+  border: 2px #684e24 solid;
+  padding: 4px;
+  background-color: #a99067;
+
+  /* padding: 12px; */
 }

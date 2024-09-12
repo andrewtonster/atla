@@ -8,13 +8,16 @@ export const SearchResults = ({
   setSelectedResult,
   onClick,
 }) => {
-  // sets menuRef to false
+  // We create menu ref to target the result list
 
   let menuRef = React.useRef();
 
   React.useEffect(() => {
+    // every mouse down outside the target
+    // use effect lifecycle, run code once, when dependecy array changes
+    // call cleanup, destroy effect, and save value for next render
     let handler = (e) => {
-      if (!menuRef.current.contains(e.target)) {
+      if (menuRef.current && !menuRef.current.contains(e.target)) {
         setOpen(false);
       }
     };
@@ -24,7 +27,7 @@ export const SearchResults = ({
     return () => {
       document.removeEventListener("mousedown", handler);
     };
-  });
+  }, []);
 
   return (
     <>
