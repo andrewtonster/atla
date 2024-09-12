@@ -29,7 +29,7 @@ export const SearchBar = ({ win, results, setOpen, setResults }) => {
       <div className="searchbar__container">
         {win ? (
           <input
-            disabled
+            readonly
             placeholder="Type to search.."
             value={input}
             onChange={(e) => handleChange(e.target.value)}

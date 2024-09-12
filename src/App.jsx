@@ -9,19 +9,53 @@ import { ScrollAnswers } from "./ScrollAnswers";
 import { users } from "./data";
 import Confetti from "react-confetti";
 function App() {
+  // in order to save our chosen answers
+  // initially set the selected results to the array of characters, if not then none
+  // on every selected character, so when selected results changes, we set the
+  // local storage to the same array
+  // then every 24 hours we want to remove the saved values from the selecterd reuslts
+
   /* passing down a function setResults allow us to 
   update results in search results is like a list of matching names*/
   const [results, setResults] = useState(users);
-  const [selectedResult, setSelectedResult] = useState([]);
+  const [selectedResult, setSelectedResult] = useState(() => {
+    const savedState = localStorage.getItem("selectedResult");
+    return savedState === null ? [] : JSON.parse(savedState);
+  });
   const [open, setOpen] = useState();
   const [attempts, setAttempts] = useState(0);
-  const [answer, setAnswer] = useState(
-    users[Math.floor(Math.random() * users.length)]
-  );
+
+  const [answer, setAnswer] = useState(() => {
+    const selectedState = localStorage.getItem("answer");
+    return selectedState === null
+      ? users[Math.floor(Math.random() * users.length)]
+      : JSON.parse(selectedState);
+  });
+
   const [win, setWin] = useState(false);
+
+  // localStorage.removeItem("numWins");
+  // set num wins to 0 if null otherwise we grab our value
+  const [numWins, setNumWins] = useState(() => {
+    const savedState = localStorage.getItem("numWins");
+    return savedState === null ? 0 : JSON.parse(savedState);
+  });
+
+  useEffect(() => {
+    localStorage.setItem("numWins", JSON.stringify(numWins));
+  }, [numWins]);
+
+  useEffect(() => {
+    localStorage.setItem("answer", JSON.stringify(answer));
+  }, [answer]);
+
   const summary = useRef();
 
   const [time, setTime] = useState(new Date());
+
+  // Everytime we render this component however we want to get the number of wins
+
+  // Every time the number of wins for the user changes, then we want to set the number of wins
 
   useEffect(() => {
     const calculateRemainingTime = () => {
@@ -56,7 +90,13 @@ function App() {
   const handleItemClick = (result) => {
     setOpen(false);
     // set add our selected results to previous results
-    setSelectedResult((prevResults) => [result, ...prevResults]);
+    setSelectedResult((prevResults) => {
+      localStorage.setItem(
+        "selectedResult",
+        JSON.stringify([result, ...prevResults])
+      );
+      return [result, ...prevResults];
+    });
 
     setAttempts((prevAttempts) => {
       return prevAttempts + 1;
@@ -69,6 +109,9 @@ function App() {
     if (result.name == answer.name) {
       setWin(true);
       scrollToElement();
+      setNumWins((prevWins) => {
+        return prevWins + 1;
+      });
     }
   };
 
@@ -83,7 +126,7 @@ function App() {
           <div className="content__header__border">
             <div className="content__header">
               <h1>Guess Today's Avatar Character</h1>
-              {/* <h1>ATLADLE</h1> */}
+              <div>I have {numWins}</div>
 
               <p>Begin typing for results.</p>
               <p className="notice">
