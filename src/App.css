@@ -49,6 +49,41 @@ body {
   background-attachment: fixed;
 } */
 
+.trophie__container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  height: auto;
+}
+
+.trophie {
+  font-size: 48px;
+  color: #f0bb40;
+}
+
+.trophie :hover {
+}
+
+.img__container {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.overlay__num {
+  position: absolute;
+  top: 10px;
+  color: black;
+  font-weight: bold;
+}
+
+.question {
+  font-size: 48px;
+  color: black;
+  cursor: pointer;
+}
 .content {
   display: flex;
   border: 1px red solid;
@@ -68,6 +103,17 @@ body {
 .content a {
   color: inherit;
   text-decoration: none;
+}
+
+.content__nav {
+  width: 300px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ddd0a7;
+  border: 5px solid #684e24;
+  padding: 4px;
+  margin-bottom: 1rem;
 }
 
 .content__header__border {

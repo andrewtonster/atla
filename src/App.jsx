@@ -8,6 +8,7 @@ import { SearchResults } from "./SearchResults";
 import { ScrollAnswers } from "./ScrollAnswers";
 import { users } from "./data";
 import Confetti from "react-confetti";
+import trophie from "./image/icons8-trophy.gif";
 function App() {
   // in order to save our chosen answers
   // initially set the selected results to the array of characters, if not then none
@@ -123,10 +124,22 @@ function App() {
       <section className="hero">
         <div className="content">
           <div className="title">Avatardle</div>
+          <div className="content__nav">
+            <div className="content__nav__itm">
+              <div className="trophie__container">
+                <div className="overlay__num">{numWins}</div>
+                <div className="img__container">
+                  <i className="ri-trophy-fill trophie"></i>
+                </div>
+              </div>
+            </div>
+            <div className="content__nav__itm">
+              <i class="question ri-question-line"></i>
+            </div>
+          </div>
           <div className="content__header__border">
             <div className="content__header">
               <h1>Guess Today's Avatar Character</h1>
-              <div>I have {numWins}</div>
 
               <p>Begin typing for results.</p>
               <p className="notice">
