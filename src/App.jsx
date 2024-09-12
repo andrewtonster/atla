@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import { Header } from "./Header";
@@ -20,6 +20,38 @@ function App() {
   );
   const [win, setWin] = useState(false);
   const summary = useRef();
+
+  const [time, setTime] = useState(new Date());
+
+  useEffect(() => {
+    const calculateRemainingTime = () => {
+      const now = new Date();
+      const endOfDay = new Date();
+      endOfDay.setHours(23, 59, 59, 999); // End of the day
+
+      // Calculate remaining time in milliseconds
+      const remainingTime = endOfDay - now;
+
+      // Convert remaining time from milliseconds to hours, minutes, and seconds
+      const remainingHours = Math.floor(remainingTime / (1000 * 60 * 60));
+      const remainingMinutes = Math.floor(
+        (remainingTime % (1000 * 60 * 60)) / (1000 * 60)
+      );
+      const remainingSeconds = Math.floor((remainingTime % (1000 * 60)) / 1000);
+
+      setTime({
+        hours: remainingHours,
+        minutes: remainingMinutes,
+        seconds: remainingSeconds,
+      });
+    };
+
+    calculateRemainingTime(); // Initial calculation
+
+    const interval = setInterval(calculateRemainingTime, 1000);
+
+    return () => clearInterval(interval); // Cleanup on component unmount
+  }, []);
 
   const handleItemClick = (result) => {
     setOpen(false);
@@ -43,6 +75,7 @@ function App() {
   return (
     <>
       <div>{win && <Confetti />}</div>
+
       <div className="background"></div>
       <section className="hero">
         <div className="content">
@@ -75,15 +108,22 @@ function App() {
           <div>
             <ScrollAnswers answer={answer} results={selectedResult} />
           </div>
-          <div ref={summary} className="victory__results">
-            <span className="victory__header">
-              Congrats! You are the wordle Avatar
-            </span>
-            <span className="victory__atempts">
-              Number of Attempts: {attempts}{" "}
-            </span>
-            <span className="victory__date">Next Character in </span>
-          </div>
+
+          {
+            <div className="victory__results__border">
+              <div ref={summary} className="victory__results">
+                <h1 className="victory__congrats"> Congrats! </h1>
+                <span className="victory__header">
+                  You are the wordle Avatar
+                </span>
+                <span className="victory__atempts">
+                  Number of Attempts: <strong>{attempts}</strong>
+                </span>
+                <span className="victory__date">Next Character in: </span>
+                <div className="victory__time">{`${time.hours} : ${time.minutes} : ${time.seconds} `}</div>
+              </div>
+            </div>
+          }
         </div>
       </section>
     </>
