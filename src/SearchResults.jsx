@@ -1,6 +1,7 @@
 import React from "react";
 import "./SearchResults.css";
 import { SearchItem } from "./SearchItem";
+
 export const SearchResults = ({
   open,
   setOpen,

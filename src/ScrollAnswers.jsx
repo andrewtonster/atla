@@ -2,6 +2,7 @@ import React from "react";
 import "./ScrollAnswers.css";
 import { ScrollAnswerItem } from "./ScrollAnswerItem";
 
+/* Scroll answers just the title  */
 export const ScrollAnswers = ({ answer, results }) => {
   return (
     <div className="answers__container">

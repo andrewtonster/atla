@@ -1,0 +1,37 @@
+{
+  "hash": "3c740bb6",
+  "configHash": "7f4a225c",
+  "lockfileHash": "c4ec5d9e",
+  "browserHash": "fcceb849",
+  "optimized": {
+    "react": {
+      "src": "../../node_modules/react/index.js",
+      "file": "react.js",
+      "fileHash": "09bd3f12",
+      "needsInterop": true
+    },
+    "react-dom/client": {
+      "src": "../../node_modules/react-dom/client.js",
+      "file": "react-dom_client.js",
+      "fileHash": "6c156821",
+      "needsInterop": true
+    },
+    "react-confetti": {
+      "src": "../../node_modules/react-confetti/dist/react-confetti.min.js",
+      "file": "react-confetti.js",
+      "fileHash": "f221e2ad",
+      "needsInterop": true
+    },
+    "react-icons/md": {
+      "src": "../../node_modules/react-icons/md/index.mjs",
+      "file": "react-icons_md.js",
+      "fileHash": "138a8a8f",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-UTEJFLXC": {
+      "file": "chunk-UTEJFLXC.js"
+    }
+  }
+}
