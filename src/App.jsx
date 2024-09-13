@@ -8,35 +8,71 @@ import { SearchResults } from "./SearchResults";
 import { ScrollAnswers } from "./ScrollAnswers";
 import { users } from "./data";
 import Confetti from "react-confetti";
-import trophie from "./image/icons8-trophy.gif";
+
 import { Information } from "./Information";
 
 function App() {
-  // in order to save our chosen answers
-  // initially set the selected results to the array of characters, if not then none
-  // on every selected character, so when selected results changes, we set the
-  // local storage to the same array
-  // then every 24 hours we want to remove the saved values from the selecterd reuslts
+  localStorage.clear();
 
-  /* passing down a function setResults allow us to 
-  update results in search results is like a list of matching names*/
+  const randomGenerator = () => {
+    function hashString(str) {
+      let hash = 0;
+      for (let i = 0; i < str.length; i++) {
+        hash = (hash << 5) - hash + str.charCodeAt(i);
+        hash |= 0; // Convert to 32bit integer
+      }
+      return Math.abs(hash);
+    }
+
+    // Create a seeded random number generator based on the date or a fixed seed
+    function seededRandom(seed) {
+      const x = Math.sin(seed) * 10000;
+      return x - Math.floor(x);
+    }
+
+    // Use UTC date for consistency across time zones
+    const todayUTC = new Date().toISOString().split("T")[0]; // "YYYY-MM-DD" format (global date)
+
+    // Hash the UTC date
+    const seed = hashString(todayUTC);
+
+    // Generate a "random" number based on the seed (consistent across all users)
+    const consistentRandomNumber = Math.floor(
+      seededRandom(seed) * users.length
+    );
+
+    // Example usage: select a user based on consistent random index
+    return consistentRandomNumber;
+  };
+  const [characterList, setCharacterList] = useState(() => {
+    const savedState = localStorage.getItem("characterList");
+
+    return savedState === null ? users : JSON.parse(savedState);
+  });
+  const [showApparition, setShowApparition] = useState(false);
+  const [showDescription, setShowDescription] = useState(false);
   const [results, setResults] = useState(users);
   const [selectedResult, setSelectedResult] = useState(() => {
     const savedState = localStorage.getItem("selectedResult");
     return savedState === null ? [] : JSON.parse(savedState);
   });
   const [open, setOpen] = useState();
-  const [attempts, setAttempts] = useState(0);
+
+  const [attempts, setAttempts] = useState(() => {
+    const savedState = localStorage.getItem("attempts");
+    return savedState === null ? 0 : JSON.parse(savedState);
+  });
 
   const [answer, setAnswer] = useState(() => {
     const selectedState = localStorage.getItem("answer");
     return selectedState === null
-      ? users[Math.floor(Math.random() * users.length)]
+      ? users[randomGenerator()]
       : JSON.parse(selectedState);
   });
 
   const [win, setWin] = useState(false);
 
+  console.log(answer);
   // localStorage.removeItem("numWins");
   // set num wins to 0 if null otherwise we grab our value
   const [numWins, setNumWins] = useState(() => {
@@ -63,7 +99,12 @@ function App() {
     localStorage.setItem("answer", JSON.stringify(answer));
   }, [answer]);
 
+  useEffect(() => {
+    localStorage.setItem("attempts", JSON.stringify(attempts));
+  }, [attempts]);
+
   const summary = useRef();
+  const hint = useRef();
 
   const [time, setTime] = useState(new Date());
 
@@ -86,7 +127,17 @@ function App() {
         (remainingTime % (1000 * 60 * 60)) / (1000 * 60)
       );
       const remainingSeconds = Math.floor((remainingTime % (1000 * 60)) / 1000);
-
+      if (
+        remainingHours === 0 &&
+        remainingMinutes === 0 &&
+        remainingSeconds === 0
+      ) {
+        setAttempts(0);
+        setAnswer(users[randomGenerator()]);
+        setSelectedResult([]);
+        setItem("selectedResult", JSON.stringify([]));
+      }
+      // console.log(remainingHours, remainingMinutes, remainingSeconds);
       setTime({
         hours: remainingHours,
         minutes: remainingMinutes,
@@ -104,6 +155,16 @@ function App() {
   const handleItemClick = (result) => {
     setOpen(false);
     // set add our selected results to previous results
+    setCharacterList((prevList) => {
+      const newList = prevList.filter((user) => {
+        return user !== result;
+      });
+
+      localStorage.setItem("characterList", JSON.stringify(newList));
+
+      return newList;
+    });
+
     setSelectedResult((prevResults) => {
       localStorage.setItem(
         "selectedResult",
@@ -129,6 +190,19 @@ function App() {
     }
   };
 
+  const openApparition = () => {
+    setShowDescription(false);
+    setShowApparition((prev) => {
+      return !prev;
+    });
+  };
+
+  const openDescription = () => {
+    setShowApparition(false);
+    setShowDescription((prev) => {
+      return !prev;
+    });
+  };
   return (
     <>
       <div>{win && <Confetti />}</div>
@@ -158,6 +232,57 @@ function App() {
               <h1>Guess Today's Avatar Character</h1>
 
               <p>Begin typing for results.</p>
+
+              <div className="hints__container">
+                {attempts >= 5 ? (
+                  <div
+                    onClick={openApparition}
+                    className="hint__apparition blue"
+                  >
+                    <i class="ri-tv-line"></i>
+                  </div>
+                ) : (
+                  <div className="hint__apparition">
+                    <p>
+                      <i class="ri-tv-line"></i>
+                    </p>
+                    <div>
+                      First Episode Clue in <strong>{5 - attempts}</strong>
+                    </div>
+                  </div>
+                )}
+
+                {attempts >= 7 ? (
+                  <div
+                    onClick={openDescription}
+                    className="hint__description blue"
+                  >
+                    <i class="ri-file-paper-2-line"></i>
+                  </div>
+                ) : (
+                  <div className="hint__description">
+                    <p>
+                      <i class="ri-file-paper-2-line"></i>
+                    </p>
+                    <div>
+                      Description Clue in <strong>{7 - attempts}</strong>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {attempts >= 5 && showApparition && (
+                <div ref={hint} className="hint__appear">
+                  This is the Apparition hint
+                </div>
+              )}
+
+              {attempts >= 7 && showDescription && (
+                <div ref={hint} className="hint__appear">
+                  This is the Description hint
+                </div>
+              )}
+
               <p className="notice">
                 Characters only up to date with first Avatar TV series
               </p>
@@ -165,6 +290,7 @@ function App() {
           </div>
           <div>
             <SearchBar
+              characterList={characterList}
               win={win}
               setOpen={setOpen}
               results={results}

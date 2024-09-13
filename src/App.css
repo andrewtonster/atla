@@ -129,7 +129,7 @@ body {
 
 .content__header {
   text-align: center;
-  height: 200px;
+
   border-radius: 4px;
   /* display: flex; */
   border: 2px #684e24 solid;
@@ -189,4 +189,55 @@ body {
   font-weight: bold;
   font-size: 24px;
   font-family: "Permanent Marker", cursive;
+}
+
+.hints__container {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.hint__apparition {
+  border: 2px solid #684e24;
+  width: 100px;
+  height: 110px;
+  border-radius: 2px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.hint__description {
+  border: 2px solid #684e24;
+  width: 100px;
+  height: 110px;
+  border-radius: 2px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.hint__appear {
+  margin-top: 1rem;
+  border: 1px solid red;
+  /* display: none; */
+}
+
+.ri-file-paper-2-line {
+  font-size: 2rem;
+}
+
+.ri-tv-line {
+  font-size: 2rem;
+}
+
+.blue {
+  background-color: #649cc8;
 }

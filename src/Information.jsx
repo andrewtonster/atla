@@ -76,6 +76,14 @@ export const Information = ({ time, onClick, isOpen, onClose }) => {
             they are affiliated with the same group
           </p>
           <br />
+          <h1 className="x-large">Catagories</h1>
+          <br />
+          <h3 className="larger">First Episode</h3>
+          <p>This clue tells what episode the character first appeared</p>
+          <br />
+          <h3 className="larger">Description</h3>
+          <p>This clue gives a description about the character</p>
+          <br />
         </div>
       )}
     </>

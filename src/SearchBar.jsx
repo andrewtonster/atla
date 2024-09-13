@@ -4,13 +4,20 @@ import { users } from "./data";
 import "./Searchbar.css";
 
 /* This component fetches the data and passes the value back to the Parent App for other areas to use */
-export const SearchBar = ({ win, results, setOpen, setResults }) => {
+export const SearchBar = ({
+  win,
+  results,
+  setOpen,
+  setResults,
+  characterList,
+}) => {
   const [input, setInput] = useState("");
 
   // we are returning the whole user object and storing in list of results
   const fetchData = (value) => {
     // console.log(results);
-    const output = users.filter((user) => {
+
+    const output = characterList.filter((user) => {
       return (
         value && user && user.name && user.name.toLowerCase().includes(value)
       );
