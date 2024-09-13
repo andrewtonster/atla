@@ -8,7 +8,7 @@ import { SearchResults } from "./SearchResults";
 import { ScrollAnswers } from "./ScrollAnswers";
 import { users } from "./data";
 import Confetti from "react-confetti";
-
+import ConfettiExplosion from "react-confetti-explosion";
 import { Information } from "./Information";
 
 function App() {
@@ -69,7 +69,7 @@ function App() {
       ? users[randomGenerator()]
       : JSON.parse(selectedState);
   });
-
+  console.log(answer);
   const [win, setWin] = useState(false);
 
   console.log(answer);
@@ -183,7 +183,9 @@ function App() {
 
     if (result.name == answer.name) {
       setWin(true);
-      scrollToElement();
+      setTimeout(() => {
+        scrollToElement();
+      }, 1500);
       setNumWins((prevWins) => {
         return prevWins + 1;
       });
@@ -205,7 +207,17 @@ function App() {
   };
   return (
     <>
-      <div>{win && <Confetti />}</div>
+      <div>
+        {win && (
+          <ConfettiExplosion
+            className="explosion"
+            force={0.6}
+            duration={2500}
+            particleCount={250}
+            width={1000}
+          />
+        )}
+      </div>
 
       <div className={!isOpen ? "background" : "background shadow"}></div>
       <section className="hero">
@@ -257,12 +269,12 @@ function App() {
                     onClick={openDescription}
                     className="hint__description blue"
                   >
-                    <i class="ri-file-paper-2-line"></i>
+                    <i className="ri-file-paper-2-line"></i>
                   </div>
                 ) : (
                   <div className="hint__description">
                     <p>
-                      <i class="ri-file-paper-2-line"></i>
+                      <i className="ri-file-paper-2-line"></i>
                     </p>
                     <div>
                       Description Clue in <strong>{7 - attempts}</strong>

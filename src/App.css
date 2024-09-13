@@ -241,3 +241,9 @@ body {
 .blue {
   background-color: #649cc8;
 }
+
+.explosion {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
