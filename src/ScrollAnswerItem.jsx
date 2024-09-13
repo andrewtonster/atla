@@ -1,12 +1,9 @@
 import React from "react";
 import "./ScrollAnswerItem.css";
 import { users } from "./data";
-import Confetti from "react-confetti";
 
 export const ScrollAnswerItem = ({ answer, res }) => {
-  const [win, setWin] = React.useState(false);
-
-  console.log(answer);
+  //   console.log(answer);
 
   const hair = answer.hair == res.hair;
   const gender = answer.gender == res.gender;
@@ -16,12 +13,6 @@ export const ScrollAnswerItem = ({ answer, res }) => {
   const age = answer.age == res.age;
   const position = answer.position == res.position;
 
-  React.useEffect(() => {
-    if (res.name == answer.name) {
-      setWin(true);
-    }
-  }, [res]);
-
   /* each time i want to run this effect to see if i have won */
   const getColor = (value) => {
     return value ? "match-true" : "match-false";
@@ -29,7 +20,7 @@ export const ScrollAnswerItem = ({ answer, res }) => {
 
   return (
     <>
-      <div>{win && <Confetti />}</div>
+      {/* <div>{win && <Confetti />}</div> */}
       <div className="scroll__item__container">
         <div className="box__row">
           <div className={`character__box box`}>

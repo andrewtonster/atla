@@ -39,7 +39,10 @@ body {
   background-size: cover; /* Cover the entire area */
   z-index: -1; /* Place behind other content */
   background-image: url("./image/Avatar.jpg");
-  /* box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.5); */
+}
+
+.shadow {
+  box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.5);
 }
 /* .hero {
   background-size: cover;

@@ -9,6 +9,8 @@ import { ScrollAnswers } from "./ScrollAnswers";
 import { users } from "./data";
 import Confetti from "react-confetti";
 import trophie from "./image/icons8-trophy.gif";
+import { Information } from "./Information";
+
 function App() {
   // in order to save our chosen answers
   // initially set the selected results to the array of characters, if not then none
@@ -41,6 +43,17 @@ function App() {
     const savedState = localStorage.getItem("numWins");
     return savedState === null ? 0 : JSON.parse(savedState);
   });
+
+  const [isOpen, setIsOpen] = useState(false);
+
+  const closeInfo = () => {
+    setIsOpen(false);
+  };
+
+  const openInfo = () => {
+    console.log("opeaning info");
+    setIsOpen(true);
+  };
 
   useEffect(() => {
     localStorage.setItem("numWins", JSON.stringify(numWins));
@@ -120,7 +133,7 @@ function App() {
     <>
       <div>{win && <Confetti />}</div>
 
-      <div className="background"></div>
+      <div className={!isOpen ? "background" : "background shadow"}></div>
       <section className="hero">
         <div className="content">
           <div className="title">Avatardle</div>
@@ -133,9 +146,12 @@ function App() {
                 </div>
               </div>
             </div>
-            <div className="content__nav__itm">
-              <i class="question ri-question-line"></i>
-            </div>
+            <Information
+              onClick={openInfo}
+              onClose={closeInfo}
+              isOpen={isOpen}
+              time={time}
+            />
           </div>
           <div className="content__header__border">
             <div className="content__header">
