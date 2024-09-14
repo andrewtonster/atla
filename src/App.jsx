@@ -12,7 +12,7 @@ import ConfettiExplosion from "react-confetti-explosion";
 import { Information } from "./Information";
 
 function App() {
-  localStorage.clear();
+  // localStorage.clear();
 
   const randomGenerator = () => {
     function hashString(str) {
@@ -251,15 +251,14 @@ function App() {
                     onClick={openApparition}
                     className="hint__apparition blue"
                   >
-                    <i class="ri-tv-line"></i>
+                    <i className="ri-tv-line"></i>
                   </div>
                 ) : (
                   <div className="hint__apparition">
-                    <p>
-                      <i class="ri-tv-line"></i>
-                    </p>
+                    <i className="ri-tv-line"></i>
+
                     <div>
-                      First Episode Clue in <strong>{5 - attempts}</strong>
+                      First Episode Clue in <strong>{5 - attempts} </strong>
                     </div>
                   </div>
                 )}
@@ -273,9 +272,8 @@ function App() {
                   </div>
                 ) : (
                   <div className="hint__description">
-                    <p>
-                      <i className="ri-file-paper-2-line"></i>
-                    </p>
+                    <i className="ri-file-paper-2-line"></i>
+
                     <div>
                       Description Clue in <strong>{7 - attempts}</strong>
                     </div>
@@ -319,7 +317,7 @@ function App() {
             <ScrollAnswers answer={answer} results={selectedResult} />
           </div>
 
-          {
+          {win && (
             <div className="victory__results__border">
               <div ref={summary} className="victory__results">
                 <h1 className="victory__congrats"> Congrats! </h1>
@@ -333,7 +331,7 @@ function App() {
                 <div className="victory__time">{`${time.hours} : ${time.minutes} : ${time.seconds} `}</div>
               </div>
             </div>
-          }
+          )}
         </div>
       </section>
     </>

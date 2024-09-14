@@ -36,6 +36,7 @@ input:focus {
   border: 2px #684e24 solid;
   padding: 4px;
   background-color: #a99067;
+  margin-bottom: 1rem;
 
   /* padding: 12px; */
 }
