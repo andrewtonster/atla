@@ -224,6 +224,8 @@ body {
   align-items: center;
   cursor: pointer;
   background-color: #b1ac9d;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .hint__appear {

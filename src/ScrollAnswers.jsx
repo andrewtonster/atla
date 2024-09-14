@@ -33,7 +33,7 @@ export const ScrollAnswers = ({ answer, results }) => {
         </div>
 
         <div className="answer__title_container">
-          <span>Bending</span>
+          <span>Book</span>
           <div className="lines"></div>
         </div>
         <div className="answer__title_container">

@@ -56,9 +56,13 @@ export const Information = ({ time, onClick, isOpen, onClose }) => {
           </p>
           <br />
           <h3 className="larger">Fighting</h3>
+          <p>Fighting cataory represent their most used fighting style</p>
+          <br />
+
+          <h3 className="larger">Book</h3>
           <p>
-            Fighting catagory represents if the characters use similar weapons
-            or abilities
+            Book describes the book the character was first seen, and also gives
+            the book title
           </p>
           <br />
           <h3 className="larger">Bending</h3>
@@ -67,22 +71,28 @@ export const Information = ({ time, onClick, isOpen, onClose }) => {
             capabilities
           </p>
           <br />
-          <h3 className="larger">Age</h3>
-          <p>Age represents whether they are in the same age catagory</p>
-          <br />
           <h3 className="larger">Position</h3>
           <p>
             position represents if they have similar political position or if
             they are affiliated with the same group
           </p>
           <br />
-          <h1 className="x-large">Catagories</h1>
+          <h1 className="x-large">Hint</h1>
           <br />
-          <h3 className="larger">First Episode</h3>
-          <p>This clue tells what episode the character first appeared</p>
-          <br />
+
           <h3 className="larger">Description</h3>
-          <p>This clue gives a description about the character</p>
+          <p>This hint gives a description about the character</p>
+          <br />
+
+          <h1 className="x-large">Contact</h1>
+
+          <p>andrewtonster@gmail.com</p>
+          <br />
+          <p className="contact__notice">
+            Notice: Please note that all the characters and attributes are typed
+            by hand. If there are any issues or any update request please
+            contact me. Thank you for visiting!
+          </p>
           <br />
         </div>
       )}

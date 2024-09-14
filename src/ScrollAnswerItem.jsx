@@ -12,6 +12,7 @@ export const ScrollAnswerItem = ({ answer, res }) => {
   const bending = answer.bending == res.bending;
   const age = answer.age == res.age;
   const position = answer.position == res.position;
+  const book = answer.book == res.book;
 
   /* each time i want to run this effect to see if i have won */
   const getColor = (value) => {
@@ -38,8 +39,8 @@ export const ScrollAnswerItem = ({ answer, res }) => {
           <div className={`fighting__box box ${getColor(fighting)}`}>
             <span>{res.fighting}</span>
           </div>
-          <div className={`bending__box box ${getColor(bending)}`}>
-            <span>{res.bending ? "Yes" : "No"}</span>
+          <div className={`book__box box ${getColor(book)}`}>
+            <span>{res.book}</span>
           </div>
           <div className={`age__box box ${getColor(age)}`}>
             <span>{res.age}</span>

@@ -12,7 +12,7 @@ import ConfettiExplosion from "react-confetti-explosion";
 import { Information } from "./Information";
 
 function App() {
-  // localStorage.clear();
+  localStorage.clear();
 
   const randomGenerator = () => {
     function hashString(str) {
@@ -49,7 +49,7 @@ function App() {
 
     return savedState === null ? users : JSON.parse(savedState);
   });
-  const [showApparition, setShowApparition] = useState(false);
+  // const [showApparition, setShowApparition] = useState(false);
   const [showDescription, setShowDescription] = useState(false);
   const [results, setResults] = useState(users);
   const [selectedResult, setSelectedResult] = useState(() => {
@@ -70,7 +70,10 @@ function App() {
       : JSON.parse(selectedState);
   });
   console.log(answer);
-  const [win, setWin] = useState(false);
+  const [win, setWin] = useState(() => {
+    const savedState = localStorage.getItem("win");
+    return savedState === null ? false : JSON.parse(savedState);
+  });
 
   console.log(answer);
   // localStorage.removeItem("numWins");
@@ -90,6 +93,10 @@ function App() {
     console.log("opeaning info");
     setIsOpen(true);
   };
+
+  useEffect(() => {
+    localStorage.setItem("win", JSON.stringify(true));
+  }, [win]);
 
   useEffect(() => {
     localStorage.setItem("numWins", JSON.stringify(numWins));
@@ -192,15 +199,15 @@ function App() {
     }
   };
 
-  const openApparition = () => {
-    setShowDescription(false);
-    setShowApparition((prev) => {
-      return !prev;
-    });
-  };
+  // const openApparition = () => {
+  //   setShowDescription(false);
+  //   setShowApparition((prev) => {
+  //     return !prev;
+  //   });
+  // };
 
   const openDescription = () => {
-    setShowApparition(false);
+    // setShowApparition(false);
     setShowDescription((prev) => {
       return !prev;
     });
@@ -246,7 +253,7 @@ function App() {
               <p>Begin typing for results.</p>
 
               <div className="hints__container">
-                {attempts >= 5 ? (
+                {/* {attempts >= 5 ? (
                   <div
                     onClick={openApparition}
                     className="hint__apparition blue"
@@ -261,7 +268,7 @@ function App() {
                       First Episode Clue in <strong>{5 - attempts} </strong>
                     </div>
                   </div>
-                )}
+                )} */}
 
                 {attempts >= 7 ? (
                   <div
@@ -281,15 +288,15 @@ function App() {
                 )}
               </div>
 
-              {attempts >= 5 && showApparition && (
+              {/* {attempts >= 5 && showApparition && (
                 <div ref={hint} className="hint__appear">
                   This is the Apparition hint
                 </div>
-              )}
+              )} */}
 
               {attempts >= 7 && showDescription && (
                 <div ref={hint} className="hint__appear">
-                  This is the Description hint
+                  {answer.hint}
                 </div>
               )}
 

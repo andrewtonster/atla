@@ -19,7 +19,10 @@ export const SearchBar = ({
 
     const output = characterList.filter((user) => {
       return (
-        value && user && user.name && user.name.toLowerCase().includes(value)
+        value &&
+        user &&
+        user.name &&
+        user.name.toLowerCase().includes(value.toLowerCase())
       );
     });
     setResults(output);
