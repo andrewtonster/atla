@@ -36,8 +36,18 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: auto;
 }
 
+.hair__box::-webkit-scrollbar,
+.book__box::-webkit-scrollbar {
+  width: 4px;
+}
+
+.hair__box::-webkit-scrollbar-track,
+.book__box::-webkit-scrollbar-track {
+  background-color: white;
+}
 .match-true {
   background-color: #8aca4a;
   border-color: #314905;

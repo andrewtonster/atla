@@ -40,7 +40,7 @@ export const ScrollAnswerItem = ({ answer, res }) => {
             <span>{res.fighting}</span>
           </div>
           <div className={`book__box box ${getColor(book)}`}>
-            <span>{res.book}</span>
+            <span className="box__text">{res.book}</span>
           </div>
           <div className={`age__box box ${getColor(age)}`}>
             <span>{res.age}</span>

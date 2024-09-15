@@ -232,6 +232,8 @@ body {
   margin-top: 1rem;
   border: 1px solid red;
   /* display: none; */
+  border: 2px #684e24 solid;
+  font-weight: bold;
 }
 
 .ri-file-paper-2-line {

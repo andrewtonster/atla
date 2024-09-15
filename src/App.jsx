@@ -12,7 +12,7 @@ import ConfettiExplosion from "react-confetti-explosion";
 import { Information } from "./Information";
 
 function App() {
-  localStorage.clear();
+  // localStorage.clear();
 
   const randomGenerator = () => {
     function hashString(str) {

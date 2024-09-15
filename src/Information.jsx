@@ -81,7 +81,10 @@ export const Information = ({ time, onClick, isOpen, onClose }) => {
           <br />
 
           <h3 className="larger">Description</h3>
-          <p>This hint gives a description about the character</p>
+          <p>
+            Click scroll for hint. This hint gives a description about the
+            character
+          </p>
           <br />
 
           <h1 className="x-large">Contact</h1>
