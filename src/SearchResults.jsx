@@ -9,8 +9,6 @@ export const SearchResults = ({
   setSelectedResult,
   onClick,
 }) => {
-  // We create menu ref to target the result list
-
   let menuRef = React.useRef();
 
   React.useEffect(() => {
@@ -24,7 +22,6 @@ export const SearchResults = ({
     };
     document.addEventListener("mousedown", handler);
 
-    // Cleanup function to remove the event listener on component unmount
     return () => {
       document.removeEventListener("mousedown", handler);
     };

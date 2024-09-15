@@ -1,9 +1,9 @@
 .search__item__container {
-  display: flex; /* Establishes a flex container */
-  align-items: center; /* Centers items vertically */
+  display: flex;
+  align-items: center;
   background-color: #dece88;
-  padding: 10px 20px; /* Adjust padding as needed */
-  cursor: pointer; /* Makes the entire container clickable */
+  padding: 10px 20px;
+  cursor: pointer;
   color: #241b18;
 }
 
@@ -12,16 +12,16 @@
 }
 
 .search__img__container {
-  width: 50px; /* Container width */
-  height: 50px; /* Set a fixed height to ensure it is square */
-  border: 2px solid black; /* Visual indication of the container */
-  overflow: hidden; /* Ensures no overflow */
+  width: 50px;
+  height: 50px;
+  border: 2px solid black;
+  overflow: hidden;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
 }
 
 .search__img {
-  width: 100%; /* Image takes full width of the container */
-  height: 100%; /* Image takes full height of the container */
+  width: 100%;
+  height: 100%;
   object-fit: cover;
 }
 

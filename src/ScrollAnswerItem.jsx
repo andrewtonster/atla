@@ -3,8 +3,6 @@ import "./ScrollAnswerItem.css";
 import { users } from "./data";
 
 export const ScrollAnswerItem = ({ answer, res }) => {
-  //   console.log(answer);
-
   const hair = answer.hair == res.hair;
   const gender = answer.gender == res.gender;
   const nation = answer.nation == res.nation;
@@ -14,14 +12,12 @@ export const ScrollAnswerItem = ({ answer, res }) => {
   const position = answer.position == res.position;
   const book = answer.book == res.book;
 
-  /* each time i want to run this effect to see if i have won */
   const getColor = (value) => {
     return value ? "match-true" : "match-false";
   };
 
   return (
     <>
-      {/* <div>{win && <Confetti />}</div> */}
       <div className="scroll__item__container">
         <div className="box__row">
           <div className={`character__box box`}>
@@ -55,16 +51,3 @@ export const ScrollAnswerItem = ({ answer, res }) => {
 };
 
 export default ScrollAnswerItem;
-
-//   {
-//     character_img: "https://i.imgur.com/3xocnc0.png",
-//     name: "Kuei",
-//     hair: "Black",
-//     gender: "Male",
-//     nation: "Earth",
-//     fighting: null,
-//     bending: false,
-//     book: "2",
-//     age: "21-40",
-//     position: "Government",
-//   },

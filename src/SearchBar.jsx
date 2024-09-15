@@ -13,10 +13,7 @@ export const SearchBar = ({
 }) => {
   const [input, setInput] = useState("");
 
-  // we are returning the whole user object and storing in list of results
   const fetchData = (value) => {
-    // console.log(results);
-
     const output = characterList.filter((user) => {
       return (
         value &&
@@ -53,8 +50,6 @@ export const SearchBar = ({
             ></input>
           </div>
         )}
-
-        {/* <MdOutlineArrowCircleRight id="search__icon" /> */}
       </div>
     </div>
   );

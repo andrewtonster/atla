@@ -1,7 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
-import { Header } from "./Header";
 import "./App.css";
 import { SearchBar } from "./SearchBar";
 import { SearchResults } from "./SearchResults";
@@ -12,8 +11,7 @@ import ConfettiExplosion from "react-confetti-explosion";
 import { Information } from "./Information";
 
 function App() {
-  // localStorage.clear();
-
+  // Randomly generate a number based on America Time to pick the answer
   const randomGenerator = () => {
     function hashString(str) {
       let hash = 0;
@@ -24,54 +22,37 @@ function App() {
       return Math.abs(hash);
     }
 
-    // Create a seeded random number generator based on the date or a fixed seed
     function seededRandom(seed) {
       const x = Math.sin(seed) * 10000;
       return x - Math.floor(x);
     }
 
-    // Get current UTC time
     const currentUTC = new Date();
-    // Adjust to UTC+6 by adding 6 hours (milliseconds in 6 hours)
+
     currentUTC.setHours(currentUTC.getUTCHours() + 6);
 
-    // Get the date in "YYYY-MM-DD" format for UTC+6
-    const todayUTC6 = currentUTC.toISOString().split("T")[0]; // "YYYY-MM-DD" format
+    const todayUTC6 = currentUTC.toISOString().split("T")[0];
 
-    console.log("This is the UTC+6 date: ", todayUTC6);
-
-    // Hash the UTC+6 date
     const seed = hashString(todayUTC6);
-    console.log("This is the seed: ", seed);
 
-    // Example array to simulate usage (replace with your actual 'users' array)
-    const users = ["user1", "user2", "user3", "user4"];
-
-    // Generate a "random" number based on the seed (consistent across all users)
     const consistentRandomNumber = Math.floor(
       seededRandom(seed) * users.length
     );
 
-    // Example usage: select a user based on consistent random index
-    console.log("Selected user index: ", consistentRandomNumber);
-    console.log("Selected user: ", users[consistentRandomNumber]);
-
     return consistentRandomNumber;
   };
 
+  // Set character list to our default, otherwise recieve data from local storage
   const [characterList, setCharacterList] = useState(() => {
     const savedState = localStorage.getItem("characterList");
 
     return savedState === null ? users : JSON.parse(savedState);
   });
-  // const [showApparition, setShowApparition] = useState(false);
-  const [showDescription, setShowDescription] = useState(false);
-  const [results, setResults] = useState(users);
+
   const [selectedResult, setSelectedResult] = useState(() => {
     const savedState = localStorage.getItem("selectedResult");
     return savedState === null ? [] : JSON.parse(savedState);
   });
-  const [open, setOpen] = useState();
 
   const [attempts, setAttempts] = useState(() => {
     const savedState = localStorage.getItem("attempts");
@@ -84,31 +65,41 @@ function App() {
       ? users[randomGenerator()]
       : JSON.parse(selectedState);
   });
-  console.log(answer);
-  const [win, setWin] = useState(() => {
-    const savedState = localStorage.getItem("win");
-    return savedState === null ? false : JSON.parse(savedState);
-  });
 
-  console.log(answer);
-  // localStorage.removeItem("numWins");
-  // set num wins to 0 if null otherwise we grab our value
   const [numWins, setNumWins] = useState(() => {
     const savedState = localStorage.getItem("numWins");
     return savedState === null ? 0 : JSON.parse(savedState);
   });
 
+  const [win, setWin] = useState(() => {
+    const savedState = localStorage.getItem("win");
+    return savedState === null ? false : JSON.parse(savedState);
+  });
+
+  const [showDescription, setShowDescription] = useState(false);
+  const [results, setResults] = useState(users);
+
+  // state to determine dropdown open/close
+  const [open, setOpen] = useState();
+
+  console.log(answer);
+
   const [isOpen, setIsOpen] = useState(false);
+
+  const [time, setTime] = useState(new Date());
+
+  const summary = useRef();
+  const hint = useRef();
 
   const closeInfo = () => {
     setIsOpen(false);
   };
 
   const openInfo = () => {
-    console.log("opeaning info");
     setIsOpen(true);
   };
 
+  // effects to set local storage everytime state changes
   useEffect(() => {
     localStorage.setItem("win", JSON.stringify(true));
   }, [win]);
@@ -125,11 +116,7 @@ function App() {
     localStorage.setItem("attempts", JSON.stringify(attempts));
   }, [attempts]);
 
-  const summary = useRef();
-  const hint = useRef();
-
-  const [time, setTime] = useState(new Date());
-
+  // effect to update the time every second
   useEffect(() => {
     const calculateRemainingTime = () => {
       const now = new Date();
@@ -167,9 +154,9 @@ function App() {
     return () => clearInterval(interval);
   }, []);
 
+  // This handles the user submission, and checks if they have won
   const handleItemClick = (result) => {
     setOpen(false);
-    // set add our selected results to previous results
     setCharacterList((prevList) => {
       const newList = prevList.filter((user) => {
         return user !== result;
@@ -207,11 +194,13 @@ function App() {
     }
   };
 
+  // onClick function to show information page
   const openDescription = () => {
     setShowDescription((prev) => {
       return !prev;
     });
   };
+
   return (
     <>
       <div>

@@ -3,7 +3,7 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box; /* This means that padding is included inside width and height.*/
+  box-sizing: border-box;
   font-family: "Roboto", sans-serif;
   font-size: 16px;
 }
@@ -13,11 +13,11 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #5c5a54; /* Color of the scrollbar track */
+  background: #5c5a54;
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #4a4843; /* Color of the scrollbar thumb */
+  background-color: #4a4843;
 }
 
 body {
@@ -31,26 +31,19 @@ body {
   font-weight: bold;
 }
 .background {
-  position: fixed; /*position of background is fixed to img*/
+  position: fixed;
   top: 0;
   left: 0;
-  width: 100vw; /* Full viewport width */
-  height: 100vh; /* Full viewport height */
-  background-size: cover; /* Cover the entire area */
-  z-index: -1; /* Place behind other content */
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+  z-index: -1;
   background-image: url("./image/Avatar.jpg");
 }
 
 .shadow {
   box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.5);
 }
-/* .hero {
-  background-size: cover;
-  
-
-  background-size: cover;
-  background-attachment: fixed;
-} */
 
 .trophie__container {
   position: relative;
@@ -64,9 +57,6 @@ body {
 .trophie {
   font-size: 48px;
   color: #f0bb40;
-}
-
-.trophie :hover {
 }
 
 .img__container {
@@ -89,7 +79,6 @@ body {
 }
 .content {
   display: flex;
-  /* border: 1px red solid; */
   flex-direction: column;
   max-width: 1200px;
   width: 100%;
@@ -129,13 +118,8 @@ body {
 
 .content__header {
   text-align: center;
-
   border-radius: 4px;
-  /* display: flex; */
   border: 2px #684e24 solid;
-  /* flex-direction: column;
-  align-items: center;
-  justify-content: center; */
   max-width: 360px;
   background-color: #ddd0a7;
   color: #241b18;
