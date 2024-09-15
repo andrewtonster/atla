@@ -19,7 +19,7 @@ function App() {
       let hash = 0;
       for (let i = 0; i < str.length; i++) {
         hash = (hash << 5) - hash + str.charCodeAt(i);
-        hash |= 0; // Convert to 32bit integer
+        hash |= 0; // Convert to 32-bit integer
       }
       return Math.abs(hash);
     }
@@ -30,11 +30,22 @@ function App() {
       return x - Math.floor(x);
     }
 
-    // Use UTC date for consistency across time zones
-    const todayUTC = new Date().toISOString().split("T")[0]; // "YYYY-MM-DD" format (global date)
+    // Get current UTC time
+    const currentUTC = new Date();
+    // Adjust to UTC+6 by adding 6 hours (milliseconds in 6 hours)
+    currentUTC.setHours(currentUTC.getUTCHours() + 6);
 
-    // Hash the UTC date
-    const seed = hashString(todayUTC);
+    // Get the date in "YYYY-MM-DD" format for UTC+6
+    const todayUTC6 = currentUTC.toISOString().split("T")[0]; // "YYYY-MM-DD" format
+
+    console.log("This is the UTC+6 date: ", todayUTC6);
+
+    // Hash the UTC+6 date
+    const seed = hashString(todayUTC6);
+    console.log("This is the seed: ", seed);
+
+    // Example array to simulate usage (replace with your actual 'users' array)
+    const users = ["user1", "user2", "user3", "user4"];
 
     // Generate a "random" number based on the seed (consistent across all users)
     const consistentRandomNumber = Math.floor(
@@ -42,8 +53,12 @@ function App() {
     );
 
     // Example usage: select a user based on consistent random index
+    console.log("Selected user index: ", consistentRandomNumber);
+    console.log("Selected user: ", users[consistentRandomNumber]);
+
     return consistentRandomNumber;
   };
+
   const [characterList, setCharacterList] = useState(() => {
     const savedState = localStorage.getItem("characterList");
 
@@ -115,20 +130,14 @@ function App() {
 
   const [time, setTime] = useState(new Date());
 
-  // Everytime we render this component however we want to get the number of wins
-
-  // Every time the number of wins for the user changes, then we want to set the number of wins
-
   useEffect(() => {
     const calculateRemainingTime = () => {
       const now = new Date();
       const endOfDay = new Date();
-      endOfDay.setHours(23, 59, 59, 999); // End of the day
+      endOfDay.setHours(23, 59, 59, 999);
 
-      // Calculate remaining time in milliseconds
       const remainingTime = endOfDay - now;
 
-      // Convert remaining time from milliseconds to hours, minutes, and seconds
       const remainingHours = Math.floor(remainingTime / (1000 * 60 * 60));
       const remainingMinutes = Math.floor(
         (remainingTime % (1000 * 60 * 60)) / (1000 * 60)
@@ -144,7 +153,6 @@ function App() {
         setSelectedResult([]);
         setItem("selectedResult", JSON.stringify([]));
       }
-      // console.log(remainingHours, remainingMinutes, remainingSeconds);
       setTime({
         hours: remainingHours,
         minutes: remainingMinutes,
@@ -152,11 +160,11 @@ function App() {
       });
     };
 
-    calculateRemainingTime(); // Initial calculation
+    calculateRemainingTime();
 
     const interval = setInterval(calculateRemainingTime, 1000);
 
-    return () => clearInterval(interval); // Cleanup on component unmount
+    return () => clearInterval(interval);
   }, []);
 
   const handleItemClick = (result) => {
@@ -199,15 +207,7 @@ function App() {
     }
   };
 
-  // const openApparition = () => {
-  //   setShowDescription(false);
-  //   setShowApparition((prev) => {
-  //     return !prev;
-  //   });
-  // };
-
   const openDescription = () => {
-    // setShowApparition(false);
     setShowDescription((prev) => {
       return !prev;
     });
@@ -253,23 +253,6 @@ function App() {
               <p>Begin typing for results.</p>
 
               <div className="hints__container">
-                {/* {attempts >= 5 ? (
-                  <div
-                    onClick={openApparition}
-                    className="hint__apparition blue"
-                  >
-                    <i className="ri-tv-line"></i>
-                  </div>
-                ) : (
-                  <div className="hint__apparition">
-                    <i className="ri-tv-line"></i>
-
-                    <div>
-                      First Episode Clue in <strong>{5 - attempts} </strong>
-                    </div>
-                  </div>
-                )} */}
-
                 {attempts >= 7 ? (
                   <div
                     onClick={openDescription}
@@ -287,12 +270,6 @@ function App() {
                   </div>
                 )}
               </div>
-
-              {/* {attempts >= 5 && showApparition && (
-                <div ref={hint} className="hint__appear">
-                  This is the Apparition hint
-                </div>
-              )} */}
 
               {attempts >= 7 && showDescription && (
                 <div ref={hint} className="hint__appear">
@@ -331,6 +308,13 @@ function App() {
                 <span className="victory__header">
                   You are the wordle Avatar
                 </span>
+                <span>
+                  The correct answer is: <strong>{answer.name}</strong>
+                </span>
+                <div className={`character__box box`}>
+                  <img src={answer.character_img} alt="Character" />
+                </div>
+
                 <span className="victory__atempts">
                   Number of Attempts: <strong>{attempts}</strong>
                 </span>

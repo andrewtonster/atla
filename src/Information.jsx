@@ -21,12 +21,13 @@ export const Information = ({ time, onClick, isOpen, onClose }) => {
             answer.
           </p>
           <br />
-          <div className="larger center">
+          <div className="time__header larger center">
             New Character Releases to play every 24 hrs.
           </div>
 
           <div className="center">Time until next character:</div>
           <div className="victory__time center ">{`${time.hours} : ${time.minutes} : ${time.seconds} `}</div>
+          <p className="time__zone">Time Zone: America, UTC: 6</p>
           <br />
           <p>
             <span className="green">Green</span> represents that the character

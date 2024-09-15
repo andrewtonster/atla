@@ -89,3 +89,13 @@
   font-size: 12px;
   color: #5c5a54;
 }
+
+.time__zone {
+  text-align: center;
+  font-size: 12px;
+  margin-top: 4px;
+  color: #5c5a54;
+}
+.time__header {
+  margin-bottom: 8px;
+}
