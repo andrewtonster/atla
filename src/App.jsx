@@ -12,6 +12,7 @@ import { Information } from "./Information";
 
 function App() {
   // Randomly generate a number based on America Time to pick the answer
+
   const randomGenerator = () => {
     function hashString(str) {
       let hash = 0;
@@ -45,7 +46,6 @@ function App() {
   // Set character list to our default, otherwise recieve data from local storage
   const [characterList, setCharacterList] = useState(() => {
     const savedState = localStorage.getItem("characterList");
-
     return savedState === null ? users : JSON.parse(savedState);
   });
 
@@ -99,7 +99,7 @@ function App() {
 
   // effects to set local storage everytime state changes
   useEffect(() => {
-    localStorage.setItem("win", JSON.stringify(true));
+    localStorage.setItem("win", JSON.stringify(win));
   }, [win]);
 
   useEffect(() => {
@@ -133,10 +133,13 @@ function App() {
         remainingMinutes === 0 &&
         remainingSeconds === 0
       ) {
+        setWin(false);
         setAttempts(0);
         setAnswer(users[randomGenerator()]);
         setSelectedResult([]);
-        setItem("selectedResult", JSON.stringify([]));
+        setCharacterList(users);
+        localStorage.setItem("characterList", JSON.stringify(null));
+        localStorage.setItem("selectedResult", JSON.stringify([]));
       }
       setTime({
         hours: remainingHours,
@@ -154,7 +157,9 @@ function App() {
 
   // This handles the user submission, and checks if they have won
   const handleItemClick = (result) => {
-    setOpen(false);
+    setOpen(false); // when answer click, close the dropdown
+
+    // remove character from dropdown list
     setCharacterList((prevList) => {
       const newList = prevList.filter((user) => {
         return user !== result;
@@ -165,6 +170,7 @@ function App() {
       return newList;
     });
 
+    // add new result to array of user answer choices
     setSelectedResult((prevResults) => {
       localStorage.setItem(
         "selectedResult",
@@ -173,10 +179,12 @@ function App() {
       return [result, ...prevResults];
     });
 
+    // update attempts to inccrease by one
     setAttempts((prevAttempts) => {
       return prevAttempts + 1;
     });
 
+    // describing a function to scroll to victory
     const scrollToElement = () => {
       summary.current.scrollIntoView({ behavior: "smooth", block: "end" });
     };

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { MdOutlineArrowCircleRight } from "react-icons/md";
 import { users } from "./data";
 import "./Searchbar.css";
@@ -12,6 +12,10 @@ export const SearchBar = ({
   characterList,
 }) => {
   const [input, setInput] = useState("");
+
+  useEffect(() => {
+    setInput("");
+  }, []);
 
   const fetchData = (value) => {
     const output = characterList.filter((user) => {
@@ -36,7 +40,7 @@ export const SearchBar = ({
       <div className="searchbar__container">
         {win ? (
           <input
-            readonly
+            readOnly
             placeholder="Type to search.."
             value={input}
             onChange={(e) => handleChange(e.target.value)}
