@@ -82,8 +82,6 @@ function App() {
   // state to determine dropdown open/close
   const [open, setOpen] = useState();
 
-  console.log(answer);
-
   const [isOpen, setIsOpen] = useState(false);
 
   const [time, setTime] = useState(new Date());
