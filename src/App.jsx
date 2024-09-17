@@ -11,8 +11,8 @@ import ConfettiExplosion from "react-confetti-explosion";
 import { Information } from "./Information";
 
 function App() {
-  // Randomly generate a number based on America Time to pick the answer
-
+  // // Randomly generate a number based on America Time to pick the answer
+  // localStorage.clear();
   const randomGenerator = () => {
     function hashString(str) {
       let hash = 0;
@@ -115,42 +115,93 @@ function App() {
   }, [attempts]);
 
   // effect to update the time every second
+  const getUTCMinus6Time = () => {
+    const now = new Date();
+
+    // Get the current UTC time
+    const utcTime = new Date(
+      now.getUTCFullYear(),
+      now.getUTCMonth(),
+      now.getUTCDate(),
+      now.getUTCHours(),
+      now.getUTCMinutes(),
+      now.getUTCSeconds()
+    );
+
+    // Subtract 6 hours from the UTC time to get UTC-6
+    utcTime.setHours(utcTime.getHours() - 6);
+
+    return utcTime;
+  };
+
+  const calculateRemainingTimeUTC6 = () => {
+    const nowUTC6 = getUTCMinus6Time();
+
+    // Get the current date in UTC-6 and the end of the day in UTC-6
+    const endOfDayUTC6 = new Date(nowUTC6);
+    endOfDayUTC6.setHours(23, 59, 59, 999); // End of day at 11:59:59 PM UTC-6
+
+    const remainingTime = endOfDayUTC6 - nowUTC6;
+
+    const remainingHours = Math.floor(remainingTime / (1000 * 60 * 60));
+    const remainingMinutes = Math.floor(
+      (remainingTime % (1000 * 60 * 60)) / (1000 * 60)
+    );
+    const remainingSeconds = Math.floor((remainingTime % (1000 * 60)) / 1000);
+
+    // Reset when it's a new day in UTC-6
+
+    return {
+      hours: remainingHours,
+      minutes: remainingMinutes,
+      seconds: remainingSeconds,
+    };
+  };
+
+  const resetGame = () => {
+    setWin(false);
+    setAttempts(0);
+    setAnswer(users[randomGenerator()]);
+    setSelectedResult([]);
+    setCharacterList(users);
+    localStorage.setItem("characterList", JSON.stringify(null));
+    localStorage.setItem("selectedResult", JSON.stringify([]));
+  };
+
+  const checkForReset = () => {
+    const now = getUTCMinus6Time();
+
+    // set up an old date
+    const lastCheck = localStorage.getItem("lastCheck");
+
+    if (!lastCheck) {
+      localStorage.setItem("lastCheck", now.toISOString());
+      return;
+    }
+
+    const lastCheckDate = new Date(lastCheck);
+
+    // If the current day is different from the last check day, reset the game
+    if (now.getDate() !== lastCheckDate.getDate()) {
+      resetGame();
+    }
+
+    // Update the last check time in localStorage
+    localStorage.setItem("lastCheck", now.toISOString());
+  };
+
   useEffect(() => {
-    const calculateRemainingTime = () => {
-      const now = new Date();
-      const endOfDay = new Date();
-      endOfDay.setHours(23, 59, 59, 999);
+    checkForReset();
 
-      const remainingTime = endOfDay - now;
+    const updateTimer = () => {
+      const { hours, minutes, seconds } = calculateRemainingTimeUTC6();
 
-      const remainingHours = Math.floor(remainingTime / (1000 * 60 * 60));
-      const remainingMinutes = Math.floor(
-        (remainingTime % (1000 * 60 * 60)) / (1000 * 60)
-      );
-      const remainingSeconds = Math.floor((remainingTime % (1000 * 60)) / 1000);
-      if (
-        remainingHours === 0 &&
-        remainingMinutes === 0 &&
-        remainingSeconds === 0
-      ) {
-        setWin(false);
-        setAttempts(0);
-        setAnswer(users[randomGenerator()]);
-        setSelectedResult([]);
-        setCharacterList(users);
-        localStorage.setItem("characterList", JSON.stringify(null));
-        localStorage.setItem("selectedResult", JSON.stringify([]));
-      }
-      setTime({
-        hours: remainingHours,
-        minutes: remainingMinutes,
-        seconds: remainingSeconds,
-      });
+      setTime({ hours, minutes, seconds });
+      localStorage.setItem("time", JSON.stringify({ hours, minutes, seconds }));
     };
 
-    calculateRemainingTime();
-
-    const interval = setInterval(calculateRemainingTime, 1000);
+    updateTimer();
+    const interval = setInterval(updateTimer, 1000);
 
     return () => clearInterval(interval);
   }, []);
