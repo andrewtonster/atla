@@ -10,45 +10,33 @@ import Confetti from "react-confetti";
 import ConfettiExplosion from "react-confetti-explosion";
 import { Information } from "./Information";
 
+console.log(users.length);
 function App() {
   // // Randomly generate a number based on America Time to pick the answer
-  // localStorage.clear();
+
+  // TODO: GETS RANDOM NUMBER BASED ON DAY
   const randomGenerator = () => {
-    function hashString(str) {
-      let hash = 0;
-      for (let i = 0; i < str.length; i++) {
-        hash = (hash << 5) - hash + str.charCodeAt(i);
-        hash |= 0; // Convert to 32-bit integer
-      }
-      return Math.abs(hash);
-    }
+    let referenceDate = new Date("2024-01-01");
 
-    function seededRandom(seed) {
-      const x = Math.sin(seed) * 10000;
-      return x - Math.floor(x);
-    }
+    // Get today's date
+    let today = new Date();
 
-    const currentUTC = new Date();
+    // Calculate the difference in days between today and the reference date
+    let differenceInTime = today - referenceDate;
+    let differenceInDays = Math.floor(differenceInTime / (1000 * 3600 * 24));
 
-    currentUTC.setHours(currentUTC.getUTCHours() + 6);
-
-    const todayUTC6 = currentUTC.toISOString().split("T")[0];
-
-    const seed = hashString(todayUTC6);
-
-    const consistentRandomNumber = Math.floor(
-      seededRandom(seed) * users.length
-    );
-
-    return consistentRandomNumber;
+    // Get the number for today, cycling through 0 to 77
+    let numberForToday = differenceInDays % 78;
+    return numberForToday;
   };
 
-  // Set character list to our default, otherwise recieve data from local storage
+  // TODO: SET STATE TO USERS LIST OTHERWISE GET IT FROM THE LOCAL STORAGE
   const [characterList, setCharacterList] = useState(() => {
     const savedState = localStorage.getItem("characterList");
     return savedState === null ? users : JSON.parse(savedState);
   });
 
+  // TODO: SET STATE TO [] LIST OTHERWISE GET IT FROM THE LOCAL STORAGE
   const [selectedResult, setSelectedResult] = useState(() => {
     const savedState = localStorage.getItem("selectedResult");
     return savedState === null ? [] : JSON.parse(savedState);
@@ -98,9 +86,9 @@ function App() {
   };
 
   // effects to set local storage everytime state changes
-  useEffect(() => {
-    localStorage.setItem("win", JSON.stringify(win));
-  }, [win]);
+  // useEffect(() => {
+  //   localStorage.setItem("win", JSON.stringify(win));
+  // }, [win]);
 
   useEffect(() => {
     localStorage.setItem("numWins", JSON.stringify(numWins));
@@ -168,30 +156,62 @@ function App() {
     localStorage.setItem("selectedResult", JSON.stringify([]));
   };
 
-  const checkForReset = () => {
-    const now = getUTCMinus6Time();
+  // TODO:
+  // const checkForReset = () => {
+  //   const now = getUTCMinus6Time();
 
-    // set up an old date
-    const lastCheck = localStorage.getItem("lastCheck");
+  //   // set up an old date
+  //   const lastCheck = localStorage.getItem("lastCheck");
 
-    if (!lastCheck) {
-      localStorage.setItem("lastCheck", now.toISOString());
-      return;
-    }
+  //   if (!lastCheck) {
+  //     localStorage.setItem("lastCheck", now.toISOString());
+  //     return;
+  //   }
 
-    const lastCheckDate = new Date(lastCheck);
+  //   const lastCheckDate = new Date(lastCheck);
 
-    // If the current day is different from the last check day, reset the game
-    if (now.getDate() !== lastCheckDate.getDate()) {
-      resetGame();
-    }
+  //   // If the current day is different from the last check day, reset the game
+  //   if (now.getDate() !== lastCheckDate.getDate()) {
+  //     resetGame();
+  //   }
 
-    // Update the last check time in localStorage
-    localStorage.setItem("lastCheck", now.toISOString());
-  };
+  //   // Update the last check time in localStorage
+  //   localStorage.setItem("lastCheck", now.toISOString());
+  // };
+
+  // TODO: Checking for Reset EVER SECOND
+  // useEffect(() => {
+  //   checkForReset(); // Run on initial mount
+
+  //   // Set an interval to keep checking for reset every second
+  //   const interval = setInterval(() => {
+  //     checkForReset();
+  //   }, 1000); // Runs every second
+
+  //   // Cleanup the interval on unmount
+  //   return () => clearInterval(interval);
+  // }, []);
 
   useEffect(() => {
-    checkForReset();
+    // if go on for first time, i want to set the date, calculate answer, user plays game done
+    // if i go on the second time, on a new day, i want to compare the curr date to date stored in
+    // local storage, and if the dates are different then i calculate the new answer for the wordle,
+    // then i set the current date to local host
+
+    const date = new Date().toLocaleString("en-US", {
+      timeZone: "America/Los_Angeles",
+    });
+
+    let currDate = date.split(",")[0];
+
+    const lastCheck = JSON.parse(localStorage.getItem("lastCheck"));
+
+    if (lastCheck === null) {
+      localStorage.setItem("lastCheck", JSON.stringify(currDate));
+    } else if (currDate !== lastCheck) {
+      resetGame();
+      localStorage.setItem("lastCheck", JSON.stringify(currDate));
+    }
 
     const updateTimer = () => {
       const { hours, minutes, seconds } = calculateRemainingTimeUTC6();
@@ -207,10 +227,12 @@ function App() {
   }, []);
 
   // This handles the user submission, and checks if they have won
+
+  // POST:
   const handleItemClick = (result) => {
     setOpen(false); // when answer click, close the dropdown
 
-    // remove character from dropdown list
+    // update to new character list on state and localstorage
     setCharacterList((prevList) => {
       const newList = prevList.filter((user) => {
         return user !== result;
@@ -221,7 +243,7 @@ function App() {
       return newList;
     });
 
-    // add new result to array of user answer choices
+    // set the selected user results on local storage and state
     setSelectedResult((prevResults) => {
       localStorage.setItem(
         "selectedResult",
@@ -230,7 +252,7 @@ function App() {
       return [result, ...prevResults];
     });
 
-    // update attempts to inccrease by one
+    // update the attempts
     setAttempts((prevAttempts) => {
       return prevAttempts + 1;
     });
@@ -240,8 +262,12 @@ function App() {
       summary.current.scrollIntoView({ behavior: "smooth", block: "end" });
     };
 
+    console.log(result.name);
+    console.log(answer.name);
     if (result.name == answer.name) {
+      console.log("I am in an error");
       setWin(true);
+      localStorage.setItem("win", JSON.stringify(true));
       setTimeout(() => {
         scrollToElement();
       }, 1500);
