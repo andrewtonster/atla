@@ -13,7 +13,7 @@ import { Information } from "./Information";
 console.log(users.length);
 function App() {
   // // Randomly generate a number based on America Time to pick the answer
-
+  // localStorage.clear();
   // TODO: GETS RANDOM NUMBER BASED ON DAY
   const randomGenerator = () => {
     let referenceDate = new Date("2024-01-01");
@@ -49,9 +49,11 @@ function App() {
 
   const [answer, setAnswer] = useState(() => {
     const selectedState = localStorage.getItem("answer");
-    return selectedState === null
-      ? users[randomGenerator()]
-      : JSON.parse(selectedState);
+    if (selectedState === null) {
+      localStorage.setItem("answer", JSON.stringify(users[randomGenerator()]));
+      return users[randomGenerator()];
+    }
+    return JSON.parse(selectedState);
   });
 
   const [numWins, setNumWins] = useState(() => {
@@ -94,9 +96,10 @@ function App() {
     localStorage.setItem("numWins", JSON.stringify(numWins));
   }, [numWins]);
 
-  useEffect(() => {
-    localStorage.setItem("answer", JSON.stringify(answer));
-  }, [answer]);
+  // useEffect(() => {
+  //   console.log("I am in the use effect", answer);
+  //   localStorage.setItem("answer", JSON.stringify(answer));
+  // }, [answer]);
 
   useEffect(() => {
     localStorage.setItem("attempts", JSON.stringify(attempts));
@@ -154,6 +157,7 @@ function App() {
     setCharacterList(users);
     localStorage.setItem("characterList", JSON.stringify(null));
     localStorage.setItem("selectedResult", JSON.stringify([]));
+    localStorage.setItem("answer", JSON.stringify(users[randomGenerator()]));
   };
 
   // TODO:
@@ -203,7 +207,7 @@ function App() {
     });
 
     let currDate = date.split(",")[0];
-
+    currDate = "10/25/24";
     const lastCheck = JSON.parse(localStorage.getItem("lastCheck"));
 
     if (lastCheck === null) {
