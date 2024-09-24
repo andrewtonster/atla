@@ -161,7 +161,7 @@ export const users = [
   {
     character_img: "https://i.imgur.com/YpTLfpn.png",
     name: "The Boulder",
-    hair: "black",
+    hair: "Black",
     gender: "Male",
     nation: "Earth",
     fighting: "Earth Bending",

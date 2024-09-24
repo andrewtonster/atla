@@ -10,24 +10,9 @@ import Confetti from "react-confetti";
 import ConfettiExplosion from "react-confetti-explosion";
 import { Information } from "./Information";
 
-console.log(users.length);
 function App() {
-  // // Randomly generate a number based on America Time to pick the answer
-  // localStorage.clear();
-  // TODO: GETS RANDOM NUMBER BASED ON DAY
   const randomGenerator = () => {
-    let referenceDate = new Date("2024-01-01");
-
-    // Get today's date
-    let today = new Date();
-
-    // Calculate the difference in days between today and the reference date
-    let differenceInTime = today - referenceDate;
-    let differenceInDays = Math.floor(differenceInTime / (1000 * 3600 * 24));
-
-    // Get the number for today, cycling through 0 to 77
-    let numberForToday = differenceInDays % 78;
-    return numberForToday;
+    return Math.floor(Math.random() * 78);
   };
 
   // TODO: SET STATE TO USERS LIST OTHERWISE GET IT FROM THE LOCAL STORAGE
@@ -92,9 +77,9 @@ function App() {
   //   localStorage.setItem("win", JSON.stringify(win));
   // }, [win]);
 
-  useEffect(() => {
-    localStorage.setItem("numWins", JSON.stringify(numWins));
-  }, [numWins]);
+  // useEffect(() => {
+  //   localStorage.setItem("numWins", JSON.stringify(numWins));
+  // }, [numWins]);
 
   // useEffect(() => {
   //   console.log("I am in the use effect", answer);
@@ -106,10 +91,13 @@ function App() {
   }, [attempts]);
 
   // effect to update the time every second
+
+  /*
   const getUTCMinus6Time = () => {
     const now = new Date();
 
     // Get the current UTC time
+    
     const utcTime = new Date(
       now.getUTCFullYear(),
       now.getUTCMonth(),
@@ -124,7 +112,9 @@ function App() {
 
     return utcTime;
   };
+*/
 
+  /*
   const calculateRemainingTimeUTC6 = () => {
     const nowUTC6 = getUTCMinus6Time();
 
@@ -148,6 +138,7 @@ function App() {
       seconds: remainingSeconds,
     };
   };
+*/
 
   const resetGame = () => {
     setWin(false);
@@ -155,9 +146,10 @@ function App() {
     setAnswer(users[randomGenerator()]);
     setSelectedResult([]);
     setCharacterList(users);
-    localStorage.setItem("characterList", JSON.stringify(null));
+    localStorage.setItem("characterList", JSON.stringify(data));
     localStorage.setItem("selectedResult", JSON.stringify([]));
     localStorage.setItem("answer", JSON.stringify(users[randomGenerator()]));
+    localStorage.setItem("win", JSON.stringify(false));
   };
 
   // TODO:
@@ -196,6 +188,7 @@ function App() {
   //   return () => clearInterval(interval);
   // }, []);
 
+  /*
   useEffect(() => {
     // if go on for first time, i want to set the date, calculate answer, user plays game done
     // if i go on the second time, on a new day, i want to compare the curr date to date stored in
@@ -207,7 +200,7 @@ function App() {
     });
 
     let currDate = date.split(",")[0];
-    currDate = "10/25/24";
+
     const lastCheck = JSON.parse(localStorage.getItem("lastCheck"));
 
     if (lastCheck === null) {
@@ -229,6 +222,7 @@ function App() {
 
     return () => clearInterval(interval);
   }, []);
+*/
 
   // This handles the user submission, and checks if they have won
 
@@ -276,6 +270,7 @@ function App() {
         scrollToElement();
       }, 1500);
       setNumWins((prevWins) => {
+        localStorage.setItem("numWins", JSON.stringify(prevWins + 1));
         return prevWins + 1;
       });
     }
@@ -306,6 +301,7 @@ function App() {
       <section className="hero">
         <div className="content">
           <div className="title">Avatardle</div>
+
           <div className="content__nav">
             <div className="content__nav__itm">
               <div className="trophie__container">
@@ -394,8 +390,12 @@ function App() {
                 <span className="victory__atempts">
                   Number of Attempts: <strong>{attempts}</strong>
                 </span>
-                <span className="victory__date">Next Character in: </span>
-                <div className="victory__time">{`${time.hours} : ${time.minutes} : ${time.seconds} `}</div>
+
+                <div className="victory__time">
+                  <button className="play__again" onClick={resetGame}>
+                    Play Again
+                  </button>
+                </div>
               </div>
             </div>
           )}
