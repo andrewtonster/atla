@@ -9,11 +9,37 @@ import { users } from "./data";
 import Confetti from "react-confetti";
 import ConfettiExplosion from "react-confetti-explosion";
 import { Information } from "./Information";
+import CryptoJS from "crypto-js";
+import bcrypt from "bcryptjs";
 
 function App() {
+  // localStorage.clear();
   const randomGenerator = () => {
     return Math.floor(Math.random() * 78);
   };
+
+  const secretKey = "secret"; // Replace with a secure key
+
+  function encryptObject(obj) {
+    const jsonString = JSON.stringify(obj);
+    const encrypted = CryptoJS.AES.encrypt(jsonString, secretKey).toString();
+    return encrypted;
+  }
+
+  function decryptObject(encryptedString) {
+    const decryptedBytes = CryptoJS.AES.decrypt(encryptedString, secretKey);
+    const decryptedString = decryptedBytes.toString(CryptoJS.enc.Utf8);
+    const obj = JSON.parse(decryptedString);
+    return obj;
+  }
+
+  // console.log(typeof encrypted);
+  // console.log("Encrypted:", encrypted);
+
+  // const decrypted = decryptObject(encrypted);
+  // console.log("Decrypted:", decrypted);
+
+  // const secretKey = import.meta.env.VITE_RAND_KEY;
 
   // TODO: SET STATE TO USERS LIST OTHERWISE GET IT FROM THE LOCAL STORAGE
   const [characterList, setCharacterList] = useState(() => {
@@ -34,11 +60,17 @@ function App() {
 
   const [answer, setAnswer] = useState(() => {
     const selectedState = localStorage.getItem("answer");
+
     if (selectedState === null) {
-      localStorage.setItem("answer", JSON.stringify(users[randomGenerator()]));
-      return users[randomGenerator()];
+      const answer = users[randomGenerator()];
+      const encAnswer = encryptObject(answer);
+      localStorage.setItem("answer", JSON.stringify(encAnswer));
+      return answer;
     }
-    return JSON.parse(selectedState);
+    // console.log("hello");
+    // console.log("dnsjkadsa", selectedState);
+    // console.log(decryptObject(JSON.parse(selectedState)));
+    return decryptObject(JSON.parse(selectedState));
   });
 
   const [numWins, setNumWins] = useState(() => {
@@ -73,72 +105,22 @@ function App() {
   };
 
   // effects to set local storage everytime state changes
-  // useEffect(() => {
-  //   localStorage.setItem("win", JSON.stringify(win));
-  // }, [win]);
+  useEffect(() => {
+    localStorage.setItem("win", JSON.stringify(win));
+  }, [win]);
 
   // useEffect(() => {
   //   localStorage.setItem("numWins", JSON.stringify(numWins));
   // }, [numWins]);
 
-  // useEffect(() => {
-  //   console.log("I am in the use effect", answer);
-  //   localStorage.setItem("answer", JSON.stringify(answer));
-  // }, [answer]);
+  useEffect(() => {
+    const encAnswer = encryptObject(answer);
+    localStorage.setItem("answer", JSON.stringify(encAnswer));
+  }, [answer]);
 
   useEffect(() => {
     localStorage.setItem("attempts", JSON.stringify(attempts));
   }, [attempts]);
-
-  // effect to update the time every second
-
-  /*
-  const getUTCMinus6Time = () => {
-    const now = new Date();
-
-    // Get the current UTC time
-    
-    const utcTime = new Date(
-      now.getUTCFullYear(),
-      now.getUTCMonth(),
-      now.getUTCDate(),
-      now.getUTCHours(),
-      now.getUTCMinutes(),
-      now.getUTCSeconds()
-    );
-
-    // Subtract 6 hours from the UTC time to get UTC-6
-    utcTime.setHours(utcTime.getHours() - 6);
-
-    return utcTime;
-  };
-*/
-
-  /*
-  const calculateRemainingTimeUTC6 = () => {
-    const nowUTC6 = getUTCMinus6Time();
-
-    // Get the current date in UTC-6 and the end of the day in UTC-6
-    const endOfDayUTC6 = new Date(nowUTC6);
-    endOfDayUTC6.setHours(23, 59, 59, 999); // End of day at 11:59:59 PM UTC-6
-
-    const remainingTime = endOfDayUTC6 - nowUTC6;
-
-    const remainingHours = Math.floor(remainingTime / (1000 * 60 * 60));
-    const remainingMinutes = Math.floor(
-      (remainingTime % (1000 * 60 * 60)) / (1000 * 60)
-    );
-    const remainingSeconds = Math.floor((remainingTime % (1000 * 60)) / 1000);
-
-    // Reset when it's a new day in UTC-6
-
-    return {
-      hours: remainingHours,
-      minutes: remainingMinutes,
-      seconds: remainingSeconds,
-    };
-  };
-*/
 
   const resetGame = () => {
     setWin(false);
@@ -146,85 +128,10 @@ function App() {
     setAnswer(users[randomGenerator()]);
     setSelectedResult([]);
     setCharacterList(users);
+
     localStorage.setItem("characterList", JSON.stringify(data));
     localStorage.setItem("selectedResult", JSON.stringify([]));
-    localStorage.setItem("answer", JSON.stringify(users[randomGenerator()]));
-    localStorage.setItem("win", JSON.stringify(false));
   };
-
-  // TODO:
-  // const checkForReset = () => {
-  //   const now = getUTCMinus6Time();
-
-  //   // set up an old date
-  //   const lastCheck = localStorage.getItem("lastCheck");
-
-  //   if (!lastCheck) {
-  //     localStorage.setItem("lastCheck", now.toISOString());
-  //     return;
-  //   }
-
-  //   const lastCheckDate = new Date(lastCheck);
-
-  //   // If the current day is different from the last check day, reset the game
-  //   if (now.getDate() !== lastCheckDate.getDate()) {
-  //     resetGame();
-  //   }
-
-  //   // Update the last check time in localStorage
-  //   localStorage.setItem("lastCheck", now.toISOString());
-  // };
-
-  // TODO: Checking for Reset EVER SECOND
-  // useEffect(() => {
-  //   checkForReset(); // Run on initial mount
-
-  //   // Set an interval to keep checking for reset every second
-  //   const interval = setInterval(() => {
-  //     checkForReset();
-  //   }, 1000); // Runs every second
-
-  //   // Cleanup the interval on unmount
-  //   return () => clearInterval(interval);
-  // }, []);
-
-  /*
-  useEffect(() => {
-    // if go on for first time, i want to set the date, calculate answer, user plays game done
-    // if i go on the second time, on a new day, i want to compare the curr date to date stored in
-    // local storage, and if the dates are different then i calculate the new answer for the wordle,
-    // then i set the current date to local host
-
-    const date = new Date().toLocaleString("en-US", {
-      timeZone: "America/Los_Angeles",
-    });
-
-    let currDate = date.split(",")[0];
-
-    const lastCheck = JSON.parse(localStorage.getItem("lastCheck"));
-
-    if (lastCheck === null) {
-      localStorage.setItem("lastCheck", JSON.stringify(currDate));
-    } else if (currDate !== lastCheck) {
-      resetGame();
-      localStorage.setItem("lastCheck", JSON.stringify(currDate));
-    }
-
-    const updateTimer = () => {
-      const { hours, minutes, seconds } = calculateRemainingTimeUTC6();
-
-      setTime({ hours, minutes, seconds });
-      localStorage.setItem("time", JSON.stringify({ hours, minutes, seconds }));
-    };
-
-    updateTimer();
-    const interval = setInterval(updateTimer, 1000);
-
-    return () => clearInterval(interval);
-  }, []);
-*/
-
-  // This handles the user submission, and checks if they have won
 
   // POST:
   const handleItemClick = (result) => {
