@@ -13,7 +13,6 @@ import CryptoJS from "crypto-js";
 import bcrypt from "bcryptjs";
 
 function App() {
-  // localStorage.clear();
   const randomGenerator = () => {
     return Math.floor(Math.random() * 78);
   };
