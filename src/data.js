@@ -315,7 +315,7 @@ export const users = [
     book: "2: The Cave of Two Lovers",
     age: "21-40",
     position: "Nomad",
-    hint: "The the Avatar team about the Cave of Two Lovers",
+    hint: "Free-spirited, carefree nomad. Leads his group of traveling musicians and famously sings the Secret Tunnel",
   },
   {
     character_img: "https://i.imgur.com/3xocnc0.png",

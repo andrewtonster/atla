@@ -121,6 +121,14 @@ function App() {
     localStorage.setItem("attempts", JSON.stringify(attempts));
   }, [attempts]);
 
+  useEffect(() => {
+    localStorage.setItem("selectedResult", JSON.stringify(selectedResult));
+  }, [selectedResult]);
+
+  useEffect(() => {
+    localStorage.setItem("characterList", JSON.stringify(characterList));
+  }, [characterList]);
+
   const resetGame = () => {
     setWin(false);
     setAttempts(0);
