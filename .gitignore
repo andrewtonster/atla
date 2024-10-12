@@ -27,3 +27,4 @@ dist-ssr
 data.js
 .env
 /backend/.env
+public/

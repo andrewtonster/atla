@@ -1,6 +1,6 @@
 export const users = [
   {
-    character_img: "https://i.imgur.com/T4rbGAe.png",
+    character_img: "./aang.png",
     name: "Aang",
     hair: "None",
     gender: "Male",
@@ -14,7 +14,7 @@ export const users = [
   },
 
   {
-    character_img: "https://i.imgur.com/UMnOBer.png",
+    character_img: "zuko.png",
     name: "Zuko",
     hair: "Black",
     gender: "Male",
@@ -28,7 +28,7 @@ export const users = [
   },
 
   {
-    character_img: "https://i.imgur.com/Mw34raT.png",
+    character_img: "katara.png",
     name: "Katara",
     hair: "Brown",
     gender: "Female",
@@ -41,7 +41,7 @@ export const users = [
     hint: "Avatar's love interest",
   },
   {
-    character_img: "https://i.imgur.com/wveq7mM.png",
+    character_img: "toph.png",
     name: "Toph",
     hair: "Black",
     gender: "Female",
@@ -54,7 +54,7 @@ export const users = [
     hint: "The blind girl on Team Avatar",
   },
   {
-    character_img: "https://i.imgur.com/vhRUf7C.png",
+    character_img: "azula.png",
     name: "Azula",
     hair: "Black",
     gender: "Female",
@@ -67,7 +67,7 @@ export const users = [
     hint: "Zuko's crazy sister",
   },
   {
-    character_img: "https://i.imgur.com/5K09DNs.png",
+    character_img: "sokka.png",
     name: "Sokka",
     hair: "Brown",
     gender: "Male",
@@ -80,7 +80,7 @@ export const users = [
     hint: "His favorite weapon is the boomerang",
   },
   {
-    character_img: "https://i.imgur.com/yjEpsYn.png",
+    character_img: "iroh.png",
     name: "Iroh",
     hair: "White",
     gender: "Male",
@@ -93,7 +93,7 @@ export const users = [
     hint: "Zuko's mentor",
   },
   {
-    character_img: "https://i.imgur.com/HMTbDAQ.png",
+    character_img: "ozai.png",
     name: "Ozai",
     hair: "Black",
     gender: "Male",
@@ -106,7 +106,7 @@ export const users = [
     hint: "Zuko's Father",
   },
   {
-    character_img: "https://i.imgur.com/zylILgz.png",
+    character_img: "mai.png",
     name: "Mai",
     hair: "Black",
     gender: "Female",
@@ -119,7 +119,7 @@ export const users = [
     hint: "Impassive girl on Team Azula",
   },
   {
-    character_img: "https://i.imgur.com/bilcB3d.png",
+    character_img: "tylee.png",
     name: "Ty Lee",
     hair: "Brown",
     gender: "Female",
@@ -132,7 +132,7 @@ export const users = [
     hint: "Azula's teamate with 6 identical sisters",
   },
   {
-    character_img: "https://i.imgur.com/pyfEZpH.png",
+    character_img: "roku.png",
     name: "Roku",
     hair: "White",
     gender: "Male",
@@ -146,7 +146,7 @@ export const users = [
   },
 
   {
-    character_img: "https://i.imgur.com/DHmTNer.png",
+    character_img: "suki.png",
     name: "Suki",
     hair: "Brown",
     gender: "Female",
@@ -159,7 +159,7 @@ export const users = [
     hint: "Kyoshi Warrior that liked Sokka",
   },
   {
-    character_img: "https://i.imgur.com/YpTLfpn.png",
+    character_img: "theboulder.png",
     name: "The Boulder",
     hair: "Black",
     gender: "Male",
@@ -173,7 +173,7 @@ export const users = [
   },
 
   {
-    character_img: "https://i.imgur.com/GA6wB0M.png",
+    character_img: "tyro.png",
     name: "Tyro",
     hair: "white",
     gender: "Male",
@@ -187,7 +187,7 @@ export const users = [
   },
 
   {
-    character_img: "https://i.imgur.com/pD85edM.png",
+    character_img: "jet.png",
     name: "Jet",
     hair: "Brown",
     gender: "Male",
@@ -200,7 +200,7 @@ export const users = [
     hint: "Was the Leader of the Freedom Fighters",
   },
   {
-    character_img: "https://i.imgur.com/P6GJiYA.png",
+    character_img: "bumi.png",
     name: "Bumi",
     hair: "White",
     gender: "Male",
@@ -213,7 +213,7 @@ export const users = [
     hint: "King of Omashu and Aang's childhood friend",
   },
   {
-    character_img: "https://i.imgur.com/y6801ms.png",
+    character_img: "zhao.png",
     name: "Zhao",
     hair: "Brown",
     gender: "Male",
@@ -226,7 +226,7 @@ export const users = [
     hint: "Set off to capture Avatar Aang before Zuko",
   },
   {
-    character_img: "https://i.imgur.com/6YPy9O8.png",
+    character_img: "longfeng.png",
     name: "Long Feng",
     hair: "Black",
     gender: "Male",
@@ -239,7 +239,7 @@ export const users = [
     hint: "Captured Avatar Aang bison",
   },
   {
-    character_img: "https://i.imgur.com/RD9JF9u.png",
+    character_img: "yue.png",
     name: "Yue",
     hair: "White",
     gender: "Female",
@@ -252,7 +252,7 @@ export const users = [
     hint: "Was Sokka's Girlfriend",
   },
   {
-    character_img: "https://i.imgur.com/ahSX2g4.png",
+    character_img: "sozin.png",
     name: "Sozin",
     hair: "White",
     gender: "Male",
@@ -265,7 +265,7 @@ export const users = [
     hint: "Was close friends with Roku",
   },
   {
-    character_img: "https://i.imgur.com/2JOMyoR.png",
+    character_img: "shirshu.png",
     name: "June",
     hair: "Black",
     gender: "Female",
@@ -279,7 +279,7 @@ export const users = [
   },
 
   {
-    character_img: "https://i.imgur.com/yj3FQHm.png",
+    character_img: "kyoshi.png",
     name: "Kyoshi",
     hair: "Brown",
     gender: "Female",
@@ -292,7 +292,7 @@ export const users = [
     hint: "The Earth Kingdom Avatar that was capable of lavabending",
   },
   {
-    character_img: "https://i.imgur.com/ZO397aT.png",
+    character_img: "smellerbee.png",
     name: "Smellerbee",
     hair: "Brown",
     gender: "Female",
@@ -305,7 +305,7 @@ export const users = [
     hint: "The member of Freedom Fighter that dressed tomboyish",
   },
   {
-    character_img: "https://i.imgur.com/OSjINlM.png",
+    character_img: "chong.png",
     name: "Chong",
     hair: "Black",
     gender: "Male",
@@ -318,7 +318,7 @@ export const users = [
     hint: "Free-spirited, carefree nomad. Leads his group of traveling musicians and famously sings the Secret Tunnel",
   },
   {
-    character_img: "https://i.imgur.com/3xocnc0.png",
+    character_img: "kuei.png",
     name: "Kuei",
     hair: "Black",
     gender: "Male",
@@ -332,7 +332,7 @@ export const users = [
   },
 
   {
-    character_img: "https://i.imgur.com/SAT84OS.png",
+    character_img: "piandao.png",
     name: "Piandao",
     hair: "Black",
     gender: "Male",
@@ -346,7 +346,7 @@ export const users = [
   },
 
   {
-    character_img: "https://i.imgur.com/3xocnc0.png",
+    character_img: "teo.png",
     name: "Teo",
     hair: "Black",
     gender: "Male",
@@ -360,7 +360,7 @@ export const users = [
   },
 
   {
-    character_img: "https://i.imgur.com/Fm74m41.png",
+    character_img: "jin.png",
     name: "Jin",
     hair: "Black",
     gender: "Female",
@@ -373,7 +373,7 @@ export const users = [
     hint: "Zuko's date",
   },
   {
-    character_img: "https://i.imgur.com/3n2CEvm.png",
+    character_img: "hahn.png",
     name: "Hahn",
     hair: "Black",
     gender: "Male",
@@ -387,7 +387,7 @@ export const users = [
   },
 
   {
-    character_img: "https://i.imgur.com/OziFFLM.png",
+    character_img: "onji.png",
     name: "On Ji",
     hair: "Brown",
     gender: "Female",
@@ -401,7 +401,7 @@ export const users = [
   },
 
   {
-    character_img: "https://i.imgur.com/jUbr5GV.png",
+    character_img: "meng.png",
     name: "Meng",
     hair: "Black",
     gender: "Female",
@@ -415,7 +415,7 @@ export const users = [
   },
 
   {
-    character_img: "https://i.imgur.com/ZcWrXxe.png",
+    character_img: "kuruk.png",
     name: "Kuruk",
     hair: "Black",
     gender: "Male",
@@ -429,7 +429,7 @@ export const users = [
   },
 
   {
-    character_img: "https://i.imgur.com/qcj3Ha3.png",
+    character_img: "pipsqueak.png",
     name: "Pipsqueak",
     hair: "Black",
     gender: "Male",
@@ -442,7 +442,7 @@ export const users = [
     hint: "Strongest member physically of Freedom Fighters",
   },
   {
-    character_img: "https://i.imgur.com/W9f8qLR.png",
+    character_img: "chan.png",
     name: "Chan",
     hair: "Black",
     gender: "Male",
@@ -455,7 +455,7 @@ export const users = [
     hint: "Azula flirts with this person",
   },
   {
-    character_img: "https://i.imgur.com/i85bcVq.png",
+    character_img: "haru.png",
     name: "Haru",
     hair: "Brown",
     gender: "Male",
@@ -469,7 +469,7 @@ export const users = [
   },
 
   {
-    character_img: "https://i.imgur.com/6rNCrhH.png",
+    character_img: "hama.png",
     name: "Hama",
     hair: "White",
     gender: "Female",
@@ -483,7 +483,7 @@ export const users = [
   },
 
   {
-    character_img: "https://i.imgur.com/PZVivV1.png",
+    character_img: "pakku.png",
     name: "Pakku",
     hair: "White",
     gender: "Male",
@@ -497,7 +497,7 @@ export const users = [
   },
 
   {
-    character_img: "https://i.imgur.com/rg5Smm1.png",
+    character_img: "oyaji.png",
     name: "Oyaji",
     hair: "White",
     gender: "Male",
@@ -511,7 +511,7 @@ export const users = [
   },
 
   {
-    character_img: "https://i.imgur.com/6g8KmWU.png",
+    character_img: "how.png",
     name: "How",
     hair: "Black",
     gender: "Male",
@@ -524,7 +524,7 @@ export const users = [
     hint: "Protected the walls of Earth Kingdom",
   },
   {
-    character_img: "https://i.imgur.com/aqBroYb.png",
+    character_img: "sung.png",
     name: "Sung",
     hair: "Black",
     gender: "Male",
@@ -538,7 +538,7 @@ export const users = [
   },
 
   {
-    character_img: "https://i.imgur.com/FNdDBjS.png",
+    character_img: "quon.png",
     name: "Quon",
     hair: "None",
     gender: "Male",
@@ -552,7 +552,7 @@ export const users = [
   },
 
   {
-    character_img: "https://i.imgur.com/IE14vYF.png",
+    character_img: "tycho.png",
     name: "Tycho",
     hair: "Black",
     gender: "Male",
@@ -566,7 +566,7 @@ export const users = [
   },
 
   {
-    character_img: "https://i.imgur.com/MwEpf9s.png",
+    character_img: "hakoda.png",
     name: "Hakoda",
     hair: "Brown",
     gender: "Male",
@@ -580,7 +580,7 @@ export const users = [
   },
 
   {
-    character_img: "https://i.imgur.com/rpojRbx.png",
+    character_img: "joodee.png",
     name: "Joo Dee",
     hair: "Black",
     gender: "Female",
@@ -594,7 +594,7 @@ export const users = [
   },
 
   {
-    character_img: "https://i.imgur.com/vtTzhA3.png",
+    character_img: "kanna.png",
     name: "Kanna",
     hair: "white",
     gender: "Female",
@@ -607,7 +607,7 @@ export const users = [
     hint: "Referred to by Gran Gran",
   },
   {
-    character_img: "https://i.imgur.com/4PLUx5P.png",
+    character_img: "gyatso.png",
     name: "Gyatso",
     hair: "None",
     gender: "Male",
@@ -620,7 +620,7 @@ export const users = [
     hint: "Aang said he was the greatest airbending master",
   },
   {
-    character_img: "https://i.imgur.com/059RhuU.png",
+    character_img: "sela.png",
     name: "Sela",
     hair: "Black",
     gender: "Female",
@@ -634,7 +634,7 @@ export const users = [
   },
 
   {
-    character_img: "https://i.imgur.com/mqBcIG7.png",
+    character_img: "poon.png",
     name: "Poon",
     hair: "Brown",
     gender: "Male",
@@ -647,7 +647,7 @@ export const users = [
     hint: "This character belittled iroh in prison ",
   },
   {
-    character_img: "https://i.imgur.com/o0XeofH.png",
+    character_img: "yagoda.png",
     name: "Yagoda",
     hair: "White",
     gender: "Female",
@@ -660,7 +660,7 @@ export const users = [
     hint: "Was a waterbending master who taught healing from Agna Qel'a",
   },
   {
-    character_img: "https://i.imgur.com/qeFckCm.png",
+    character_img: "azulon.png",
     name: "Azulon",
     hair: "White",
     gender: "Male",
@@ -674,7 +674,7 @@ export const users = [
   },
 
   {
-    character_img: "https://i.imgur.com/eNqyfPK.png",
+    character_img: "jeong.png",
     name: "Jeon Jeong",
     hair: "White",
     gender: "Male",
@@ -688,7 +688,7 @@ export const users = [
   },
 
   {
-    character_img: "https://i.imgur.com/swYiVhl.png",
+    character_img: "ming.png",
     name: "Ming",
     hair: "Brown",
     gender: "Female",
@@ -702,7 +702,7 @@ export const users = [
   },
 
   {
-    character_img: "https://i.imgur.com/tPVYwlX.png",
+    character_img: "jee.png",
     name: "Jee",
     hair: "White",
     gender: "Male",
@@ -716,7 +716,7 @@ export const users = [
   },
 
   {
-    character_img: "https://i.imgur.com/OM8M9pa.png",
+    character_img: "moku.png",
     name: "Moku",
     hair: "Black",
     gender: "Male",
@@ -730,7 +730,7 @@ export const users = [
   },
 
   {
-    character_img: "https://i.imgur.com/v0AbG1u.png",
+    character_img: "gansu.png",
     name: "Gansu",
     hair: "Black",
     gender: "Male",
@@ -744,7 +744,7 @@ export const users = [
   },
 
   {
-    character_img: "https://i.imgur.com/QoaIc7y.png",
+    character_img: "kwan.png",
     name: "Kwan",
     hair: "Brown",
     gender: "Female",
@@ -758,7 +758,7 @@ export const users = [
   },
 
   {
-    character_img: "https://i.imgur.com/cGIHEBX.png",
+    character_img: "luten.png",
     name: "Lu Ten",
     hair: "Black",
     gender: "Male",
@@ -772,7 +772,7 @@ export const users = [
   },
 
   {
-    character_img: "https://i.imgur.com/ieZeWsG.png",
+    character_img: "fung.png",
     name: "Fung",
     hair: "None",
     gender: "Male",
@@ -786,7 +786,7 @@ export const users = [
   },
 
   {
-    character_img: "https://i.imgur.com/8K1fM8O.png",
+    character_img: "combustion.png",
     name: "Combustion Man",
     hair: "Black",
     gender: "Male",
@@ -800,7 +800,7 @@ export const users = [
   },
 
   {
-    character_img: "https://i.imgur.com/iQFymWa.png",
+    character_img: "fong.png",
     name: "Fong",
     hair: "Black",
     gender: "Male",
@@ -814,7 +814,7 @@ export const users = [
   },
 
   {
-    character_img: "https://i.imgur.com/IrdT741.png",
+    character_img: "mechanist.png",
     name: "Mechanist",
     hair: "Black",
     gender: "Male",
@@ -828,7 +828,7 @@ export const users = [
   },
 
   {
-    character_img: "https://i.imgur.com/yfNsnCg.png",
+    character_img: "zei.png",
     name: "Zei",
     hair: "Brown",
     gender: "Male",
@@ -842,7 +842,7 @@ export const users = [
   },
 
   {
-    character_img: "https://i.imgur.com/azm08u0.png",
+    character_img: "longshot.png",
     name: "Longshot",
     hair: "Black",
     gender: "Male",
@@ -856,7 +856,7 @@ export const users = [
   },
 
   {
-    character_img: "https://i.imgur.com/ZorUDZY.png",
+    character_img: "hide.png",
     name: "Hide",
     hair: "Black",
     gender: "Male",
@@ -870,7 +870,7 @@ export const users = [
   },
 
   {
-    character_img: "https://i.imgur.com/J0SP9oc.png",
+    character_img: "ruonjian.png",
     name: "Ruon-Jian",
     hair: "Brown",
     gender: "Male",
@@ -884,7 +884,7 @@ export const users = [
   },
 
   {
-    character_img: "https://i.imgur.com/FyqAwBI.png",
+    character_img: "lee.png",
     name: "Lee",
     hair: "Black",
     gender: "Male",
@@ -898,7 +898,7 @@ export const users = [
   },
 
   {
-    character_img: "https://i.imgur.com/QuROja3.png",
+    character_img: "qin.png",
     name: "Qin",
     hair: "White",
     gender: "Male",
@@ -912,7 +912,7 @@ export const users = [
   },
 
   {
-    character_img: "https://i.imgur.com/Up89d2I.png",
+    character_img: "chit.png",
     name: "Chit Sang",
     hair: "Black",
     gender: "Male",
@@ -926,7 +926,7 @@ export const users = [
   },
 
   {
-    character_img: "https://i.imgur.com/YH79ESg.png",
+    character_img: "ursa.png",
     name: "Ursa",
     hair: "Brown",
     gender: "Female",
@@ -940,7 +940,7 @@ export const users = [
   },
 
   {
-    character_img: "https://i.imgur.com/TLPetBH.png",
+    character_img: "tachi.png",
     name: "Tashi",
     hair: "None",
     gender: "Male",
@@ -954,7 +954,7 @@ export const users = [
   },
 
   {
-    character_img: "https://i.imgur.com/8nTc6GX.png",
+    character_img: "exan.png",
     name: "Mung",
     hair: "Black",
     gender: "Male",
@@ -968,7 +968,7 @@ export const users = [
   },
 
   {
-    character_img: "https://i.imgur.com/iji1Lqs.png",
+    character_img: "bato.png",
     name: "Bato",
     hair: "Black",
     gender: "Male",
@@ -982,7 +982,7 @@ export const users = [
   },
 
   {
-    character_img: "https://i.imgur.com/5IYPd9p.png",
+    character_img: "lao.png",
     name: "Lao Beifong",
     hair: "Black",
     gender: "Male",
@@ -995,7 +995,7 @@ export const users = [
     hint: "Toph's Father who was strict",
   },
   {
-    character_img: "https://i.imgur.com/zKaG4vM.png",
+    character_img: "ying.png",
     name: "Ying",
     hair: "Black",
     gender: "Female",
@@ -1009,7 +1009,7 @@ export const users = [
   },
 
   {
-    character_img: "https://i.imgur.com/7Hkd3DZ.png",
+    character_img: "gow.png",
     name: "Gow",
     hair: "Black",
     gender: "Male",
@@ -1023,7 +1023,7 @@ export const users = [
   },
 
   {
-    character_img: "https://i.imgur.com/RwuBjq1.png",
+    character_img: "loandli.png",
     name: "Lo and Li",
     hair: "White",
     gender: "Female",
@@ -1036,7 +1036,7 @@ export const users = [
     hint: "Were the mentors of Azula",
   },
   {
-    character_img: "https://i.imgur.com/nyM2O5f.png",
+    character_img: "yonrha.png",
     name: "Yon Rha",
     hair: "White",
     gender: "Male",
@@ -1049,7 +1049,7 @@ export const users = [
     hint: "Killed Katara's mother",
   },
   {
-    character_img: "https://i.imgur.com/Ik8p9R3.png",
+    character_img: "arnook.png",
     name: "Arnook",
     hair: "Black",
     gender: "Male",
