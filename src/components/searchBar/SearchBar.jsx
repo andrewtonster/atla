@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { MdOutlineArrowCircleRight } from "react-icons/md";
-import { users } from "./data";
-import "./Searchbar.css";
+import { users } from "../../data";
+import styles from "./Searchbar.module.css";
 
 /* This component fetches the data and passes the value back to the Parent App for other areas to use */
 export const SearchBar = ({
@@ -36,8 +36,8 @@ export const SearchBar = ({
   };
 
   return (
-    <div className="searchbar__border">
-      <div className="searchbar__container">
+    <div className={styles.searchbar__border}>
+      <div className={styles.searchbar__container}>
         {win ? (
           <input
             readOnly

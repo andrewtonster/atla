@@ -2,15 +2,16 @@ import { useState, useRef, useEffect } from "react";
 import reactLogo from "./assets/react.svg";
 
 import "./App.css";
-import { SearchBar } from "./SearchBar";
-import { SearchResults } from "./SearchResults";
-import { ScrollAnswers } from "./ScrollAnswers";
+import { SearchBar } from "./components/searchBar/SearchBar";
+import { SearchResults } from "./components/searchResults/SearchResults";
+import { ScrollAnswers } from "./components/scrollAnswers/ScrollAnswers";
 import { users } from "./data";
 import Confetti from "react-confetti";
 import ConfettiExplosion from "react-confetti-explosion";
-import { Information } from "./Information";
+import { Information } from "./components/information/Information";
 import CryptoJS from "crypto-js";
 import bcrypt from "bcryptjs";
+import Footer from "./components/footer/Footer";
 
 function App() {
   const randomGenerator = () => {
@@ -31,14 +32,6 @@ function App() {
     const obj = JSON.parse(decryptedString);
     return obj;
   }
-
-  // console.log(typeof encrypted);
-  // console.log("Encrypted:", encrypted);
-
-  // const decrypted = decryptObject(encrypted);
-  // console.log("Decrypted:", decrypted);
-
-  // const secretKey = import.meta.env.VITE_RAND_KEY;
 
   // TODO: SET STATE TO USERS LIST OTHERWISE GET IT FROM THE LOCAL STORAGE
   const [characterList, setCharacterList] = useState(() => {
@@ -214,7 +207,7 @@ function App() {
       <div className={!isOpen ? "background" : "background shadow"}></div>
       <section className="hero">
         <div className="content">
-          <div className="title">Avatardle</div>
+          <h1 className="title">Avatardle</h1>
 
           <div className="content__nav">
             <div className="content__nav__itm">
@@ -291,15 +284,13 @@ function App() {
             <div className="victory__results__border">
               <div ref={summary} className="victory__results">
                 <h1 className="victory__congrats"> Congrats! </h1>
-                <span className="victory__header">
-                  You are the wordle Avatar
-                </span>
+                <hh3 className="victory__header">You are the wordle Avatar</hh3>
                 <span>
                   The correct answer is: <strong>{answer.name}</strong>
                 </span>
-                <div className={`character__box box`}>
+                <article className={`character__box box`}>
                   <img src={answer.character_img} alt="Character" />
-                </div>
+                </article>
 
                 <span className="victory__atempts">
                   Number of Attempts: <strong>{attempts}</strong>
@@ -315,6 +306,7 @@ function App() {
           )}
         </div>
       </section>
+      <Footer />
     </>
   );
 }

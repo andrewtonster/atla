@@ -1,6 +1,6 @@
 import React from "react";
-import "./SearchResults.css";
-import { SearchItem } from "./SearchItem";
+import styles from "./SearchResults.module.css";
+import { SearchItem } from "../searchItem/SearchItem";
 
 export const SearchResults = ({
   open,
@@ -30,7 +30,7 @@ export const SearchResults = ({
   return (
     <>
       {open && (
-        <div ref={menuRef} className="results__list">
+        <div ref={menuRef} className={styles.results__list}>
           {results.map((result, id) => {
             return (
               <SearchItem
