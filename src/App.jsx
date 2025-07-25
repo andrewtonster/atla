@@ -284,7 +284,7 @@ function App() {
             <div className="victory__results__border">
               <div ref={summary} className="victory__results">
                 <h1 className="victory__congrats"> Congrats! </h1>
-                <hh3 className="victory__header">You are the wordle Avatar</hh3>
+                <h3 className="victory__header">You are the wordle Avatar</h3>
                 <span>
                   The correct answer is: <strong>{answer.name}</strong>
                 </span>

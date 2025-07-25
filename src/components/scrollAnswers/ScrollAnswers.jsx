@@ -55,9 +55,15 @@ export const ScrollAnswers = ({ answer, results }) => {
       </div>
 
       <div className={styles.answers__body__container}>
+        {/* reuslts contains all the people we have chosen for the game */}
         {results && results.length > 0
           ? results.map((res, index) => (
-              <ScrollAnswerItem answer={answer} key={index} res={res} />
+              <ScrollAnswerItem
+                answer={answer}
+                key={index}
+                res={res}
+                id={index}
+              />
             ))
           : null}
       </div>

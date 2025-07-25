@@ -1,9 +1,33 @@
 /*BUILD A MEDIA QUERY FOR LESS THAN 1300*/
+@keyframes fadeInFromLeft {
+  from {
+    transform: rotateY(90deg);
+    opacity: 0;
+  }
+  to {
+    transform: rotateY(0deg);
+    opacity: 1;
+  }
+}
+
+/* 2. Make sure your class name matches exactly what you use in JSX */
+.flip__wrapper {
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  /* start hidden */
+  opacity: 0;
+  /* refer to the keyframes you actually declared: */
+  animation: fadeInFromLeft 400ms ease-in-out forwards;
+}
+
+/* 3. (If you are doing a 3D flip, you’ll also need perspective on the parent) */
 
 .scroll__item__container {
   width: 50rem;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
+  gap: calc(2rem / 7);
+  perspective: 100rem;
 }
 
 :local(article) {
@@ -13,10 +37,19 @@
   border-radius: 5px;
   margin-bottom: 1rem;
   white-space: normal;
+
+  /* 3D EFFECT*/
 }
 
 :local(article):has(span) {
   padding: 0.5rem;
+  /* transition: 2000ms transform ease-in-out;
+  transform: rotateY(90deg); */
+}
+
+:local(article):has(span):hover {
+  transform: rotateY(0deg);
+  visibility: visible;
 }
 
 :local(article img) {
@@ -37,11 +70,16 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: auto;
+  /* overflow: auto; */
 }
 
-:local(section > article):nth-child(6) {
-  overflow-y: auto;
+.scroll__item__container > /* direct children of the section */
+.flip__wrapper:nth-child(6)   /* pick the 6th one (book) */
+article > span {
+  overflow-wrap: break-word;
+  display: block;
+
+  /* if you actually want a dotted underline… */
 }
 
 .match-true {

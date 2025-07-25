@@ -27,17 +27,16 @@
 
 html {
   background-color: #797766;
-}
-
-body {
-  background: linear-gradient(hsla(0, 0%, 98%, 0.65), hsla(209, 71%, 15%, 0.65)),
-    url("./image/Avatar.jpg");
+  background: url("./image/Avatar.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
   width: 100%;
   height: 100%;
+}
+
+body {
 }
 
 .title {
