@@ -5,6 +5,7 @@
   padding: 10px 20px;
   cursor: pointer;
   color: #241b18;
+  gap: 1rem;
 }
 
 .search__item {

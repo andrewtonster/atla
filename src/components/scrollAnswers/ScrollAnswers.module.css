@@ -1,11 +1,16 @@
 .answers__container {
   max-width: 50rem;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .answers__titles__container {
   width: 100%;
   color: white;
-  backdrop-filter: blur(10px);
+
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -19,6 +24,7 @@
   height: 6rem;
   border: 1px solid white;
   flex: 0 0 6rem;
+  backdrop-filter: blur(10px);
 }
 
 .answers__titles__container article > h3 {

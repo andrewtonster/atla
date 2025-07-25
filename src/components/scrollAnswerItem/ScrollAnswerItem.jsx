@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 import styles from "./ScrollANswerItem.module.css";
 import { users } from "../../data";
 
-export const ScrollAnswerItem = ({ answer, res, id }) => {
+export const ScrollAnswerItem = ({ answer, res, isLatest }) => {
+  console.log(isLatest);
   // boolean to see if user got respective catagory correct
-  console.log(id);
+
   const hair = answer.hair == res.hair;
   const gender = answer.gender == res.gender;
   const nation = answer.nation == res.nation;
@@ -32,13 +33,15 @@ export const ScrollAnswerItem = ({ answer, res, id }) => {
 
   // state to determine how many are currently visible
   const [visibleCount, setVisibleCount] = useState(0);
+
   useEffect(() => {
-    setVisibleCount(0);
-    const timeouts = cards.map((_, i) =>
-      setTimeout(() => setVisibleCount((c) => c + 1), i * 500)
+    setVisibleCount(0); // set the amount of cards visible
+    const timeouts = cards.map(
+      (_, i) => setTimeout(() => setVisibleCount((c) => c + 1), i * 500) // schedule different timeouts at once
     );
     return () => timeouts.forEach(clearTimeout);
   }, [res]);
+
   return (
     <>
       <section className={styles.scroll__item__container}>
@@ -50,7 +53,7 @@ export const ScrollAnswerItem = ({ answer, res, id }) => {
           />
         </article>
 
-        {id === 0 ? (
+        {isLatest ? (
           cards.slice(0, visibleCount).map((card, idx) => (
             <div key={idx} className={styles.flip__wrapper}>
               <article className={card.className}>
@@ -60,42 +63,33 @@ export const ScrollAnswerItem = ({ answer, res, id }) => {
           ))
         ) : (
           <>
-            {" "}
-            <div className={styles.flip__wrapper}>
-              <article className={getColor(hair)}>
-                <span>{res.hair}</span>
-              </article>
-            </div>
-            <div className={styles.flip__wrapper}>
-              <article className={getColor(gender)}>
-                <span>{res.gender}</span>
-              </article>
-            </div>
-            <div className={styles.flip__wrapper}>
-              <article className={getColor(nation)}>
-                <span>{res.nation}</span>
-              </article>
-            </div>
-            <div className={styles.flip__wrapper}>
-              <article className={getColor(fighting)}>
-                <span>{res.fighting}</span>
-              </article>
-            </div>
-            <div className={styles.flip__wrapper}>
-              <article className={getColor(book)}>
-                <span className="box__text">{res.book}</span>
-              </article>
-            </div>
-            <div className={styles.flip__wrapper}>
-              <article className={getColor(age)}>
-                <span>{res.age}</span>
-              </article>
-            </div>
-            <div className={styles.flip__wrapper}>
-              <article className={`position__box  ${getColor(position)}`}>
-                <span>{res.position}</span>
-              </article>
-            </div>
+            <article className={getColor(hair)}>
+              <span>{res.hair}</span>
+            </article>
+
+            <article className={getColor(gender)}>
+              <span>{res.gender}</span>
+            </article>
+
+            <article className={getColor(nation)}>
+              <span>{res.nation}</span>
+            </article>
+
+            <article className={getColor(fighting)}>
+              <span>{res.fighting}</span>
+            </article>
+
+            <article className={getColor(book)}>
+              <span className="box__text">{res.book}</span>
+            </article>
+
+            <article className={getColor(age)}>
+              <span>{res.age}</span>
+            </article>
+
+            <article className={`position__box  ${getColor(position)}`}>
+              <span>{res.position}</span>
+            </article>
           </>
         )}
       </section>

@@ -62,7 +62,7 @@ export const ScrollAnswers = ({ answer, results }) => {
                 answer={answer}
                 key={index}
                 res={res}
-                id={index}
+                isLatest={index === 0}
               />
             ))
           : null}

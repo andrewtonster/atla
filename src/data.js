@@ -100,7 +100,7 @@ export const users = [
     nation: "Fire",
     fighting: "Fire Bending",
     bending: true,
-    book: "1: Winter Solstice, Part 2: Avatar Roku",
+    book: "Part 2: Avatar Roku",
     position: "Royal Family",
     age: "41-60",
     hint: "Zuko's Father",
@@ -630,7 +630,7 @@ export const users = [
     book: "2: Zuko Alone",
     age: "21-40",
     position: "Village Resident",
-    hint: "Kind woman who took care of Zuko",
+    hint: "Gansu's wife who took care of Zuko in Earth Kingdom",
   },
 
   {
