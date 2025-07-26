@@ -3,9 +3,6 @@ import styles from "./ScrollAnswerItem.module.css";
 import { users } from "../../data";
 
 export const ScrollAnswerItem = ({ answer, res, isLatest }) => {
-  console.log(isLatest);
-  // boolean to see if user got respective catagory correct
-
   const hair = answer.hair == res.hair;
   const gender = answer.gender == res.gender;
   const nation = answer.nation == res.nation;

@@ -54,9 +54,7 @@ function App() {
       localStorage.setItem("answer", JSON.stringify(encAnswer));
       return answer;
     }
-    // console.log("hello");
-    // console.log("dnsjkadsa", selectedState);
-    // console.log(decryptObject(JSON.parse(selectedState)));
+
     return decryptObject(JSON.parse(selectedState));
   });
 
@@ -157,15 +155,11 @@ function App() {
       return prevAttempts + 1;
     });
 
-    // describing a function to scroll to victory
     const scrollToElement = () => {
       summary.current.scrollIntoView({ behavior: "smooth", block: "end" });
     };
 
-    console.log(result.name);
-    console.log(answer.name);
     if (result.name == answer.name) {
-      console.log("I am in an error");
       setWin(true);
       localStorage.setItem("win", JSON.stringify(true));
       setTimeout(() => {
