@@ -284,7 +284,12 @@ function App() {
                   The correct answer is: <strong>{answer.name}</strong>
                 </span>
                 <article className={`character__box box`}>
-                  <img src={answer.character_img} alt="Character" loading="lazy">
+                  <img
+                    src={answer.character_img}
+                    alt="Character"
+                    loading="lazy"
+                    style={{ backgroundColor: "#f0f0f0" }}
+                  />
                 </article>
 
                 <span className="victory__atempts">

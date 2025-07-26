@@ -48,8 +48,9 @@ export const ScrollAnswerItem = ({ answer, res, isLatest }) => {
         <article className={styles.box}>
           <img
             src={res.character_img}
-            alt={`${res.character_img} Character's image`}
+            alt={`${res.name} Character's image`}
             loading="lazy"
+            style={{ backgroundColor: "#f0f0f0" }}
           />
         </article>
 

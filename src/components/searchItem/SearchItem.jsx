@@ -9,7 +9,8 @@ export const SearchItem = ({ result, setSelectedResult, onClick }) => {
           className={styles.search__img}
           src={result.character_img}
           loading="lazy"
-          alt={`${result.character_img} picture`}
+          alt={`${result.name} picture`}
+          style={{ backgroundColor: "#f0f0f0" }}
         />
       </div>
       <div className="search__item">{result.name}</div>
