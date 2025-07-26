@@ -284,7 +284,7 @@ function App() {
                   The correct answer is: <strong>{answer.name}</strong>
                 </span>
                 <article className={`character__box box`}>
-                  <img src={answer.character_img} alt="Character" />
+                  <img src={answer.character_img} alt="Character" loading="lazy">
                 </article>
 
                 <span className="victory__atempts">

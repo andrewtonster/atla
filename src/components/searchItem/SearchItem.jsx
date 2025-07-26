@@ -5,7 +5,12 @@ export const SearchItem = ({ result, setSelectedResult, onClick }) => {
   return (
     <section className={styles.search__item__container} onClick={onClick}>
       <div className={styles.search__img__container}>
-        <img className={styles.search__img} src={result.character_img} />
+        <img
+          className={styles.search__img}
+          src={result.character_img}
+          loading="lazy"
+          alt={`${result.character_img} picture`}
+        />
       </div>
       <div className="search__item">{result.name}</div>
     </section>
