@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import styles from "./ScrollANswerItem.module.css";
+import styles from "./ScrollAnswerItem.module.css";
 import { users } from "../../data";
 
 export const ScrollAnswerItem = ({ answer, res, isLatest }) => {
