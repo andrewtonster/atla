@@ -1,17 +1,12 @@
 import { useState, useRef, useEffect } from "react";
-import reactLogo from "./assets/react.svg";
-
 import "./App.css";
 import { SearchBar } from "./components/searchBar/SearchBar";
 import { SearchResults } from "./components/searchResults/SearchResults";
 import { ScrollAnswers } from "./components/scrollAnswers/ScrollAnswers";
 import { users } from "./data";
-import Confetti from "react-confetti";
 import ConfettiExplosion from "react-confetti-explosion";
 import { Information } from "./components/information/Information";
 import CryptoJS from "crypto-js";
-import bcrypt from "bcryptjs";
-import Footer from "./components/footer/Footer";
 
 function App() {
   const randomGenerator = () => {
@@ -306,7 +301,6 @@ function App() {
           )}
         </div>
       </section>
-      <Footer />
     </>
   );
 }

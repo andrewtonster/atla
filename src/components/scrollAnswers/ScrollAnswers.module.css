@@ -47,25 +47,6 @@
   text-align: center;
   font-weight: 600;
 }
-/* 
-:local(footer) {
-  position: sticky;
-  bottom: 5rem;
-  margin: 3rem auto;
-
-  width: 90%;
-}
-:local(footer section) {
-  border: 1px solid white;
-  border-radius: 1rem;
-  padding: 1rem 1rem;
-  text-align: center;
-  background-color: rgba(0, 0, 0, 0.2);
-}
-
-:local(footer section) {
-  white-space: normal;
-} */
 
 @media (max-width: 50rem) {
   .answers__container {

@@ -1,7 +1,6 @@
 import React from "react";
 import styles from "./ScrollAnswers.module.css";
 import { ScrollAnswerItem } from "../scrollAnswerItem/ScrollAnswerItem";
-import Footer from "../footer/Footer";
 
 export const ScrollAnswers = ({ answer, results }) => {
   return (

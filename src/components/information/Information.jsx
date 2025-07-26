@@ -11,10 +11,12 @@ export const Information = ({ time, onClick, isOpen, onClose }) => {
 
       {isOpen && (
         <div className={styles.information__container}>
-          <span className={styles.close} onClick={onClose}>
-            <b>x</b>
-          </span>
-          <h1> How to Play</h1>
+          <h1>
+            How to Play
+            <span className={styles.close} onClick={onClose}>
+              <b>x</b>
+            </span>
+          </h1>
           <br />
           <p>
             To play this game, simply type a character from the searchbar. The

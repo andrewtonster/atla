@@ -521,7 +521,7 @@ export const users = [
     book: "2: The Earth King",
     age: "21-40",
     position: "Government",
-    hint: "Protected the walls of Earth Kingdom",
+    hint: "Hi ranking military leader in Earth Kingdom who guards the Outer Wall of Ba Sing Se",
   },
   {
     character_img: "sung.png",
